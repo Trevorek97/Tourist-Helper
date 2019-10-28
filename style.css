@@ -1,0 +1,141 @@
+
+
+body
+{
+    /*background-image: linear-gradient(to bottom, #ffd700, #7F5D2FFF);*/ /*#28334aff*/
+    background-color: #f78b07;
+    padding: 0;
+    margin: 0;
+    -moz-user-select: none;
+    user-select:none;
+}
+
+header
+{
+    /*background-color: #28334AFF;
+    */height:50px;
+    background-image: linear-gradient(to bottom,#28334AFF,#4A556CFF ); /*#28334aff*/
+
+}
+
+#title
+{
+    /*MOZILLA*/
+    animation-name:"ShowTitle"; /* Nazwa animacji*/
+    animation-duration:1s; /* Czas trwania animacji*/
+    animation-iteration-count:1; /* Ile razy wykona się animacja?*/
+
+    /*CHROME*/
+    -webkit-animation-name:"ShowTitle";
+    -webkit-animation-duration:1s;
+    -webkit-animation-iteration-count:1;
+
+
+    font-size:25px;
+    color: #ddb500;
+    text-align:left;
+    margin-left:20px;
+    padding-top:2px;
+    padding-left:20px;
+    text-shadow: 1px 1px 2px darkred;
+    font-family: 'Pacifico', cursive;
+}
+
+#title:hover
+{
+    color: #bb9300;
+    text-shadow: 1px 1px 2px darkred;
+
+}
+
+
+@keyframes ShowTitle /*Mozilla*/
+{
+    0% { padding-left:100%; }
+    100% { padding-left:20px; }
+}
+
+
+footer
+{
+    background-color: #28334AFF;
+    height: 50px;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    color:whitesmoke;
+    text-align: right;
+}
+
+
+#topMenu
+{
+    background-color: #4A556CFF;
+    height:45px;
+    width: 100%;
+}
+
+
+#parallelogram
+{
+    /*MOZILLA*/
+    animation-name:"ShowParallelogram"; /* Nazwa animacji*/
+    animation-duration:1s; /* Czas trwania animacji*/
+    animation-iteration-count:1; /* Ile razy wykona się animacja?*/
+
+    /*CHROME*/
+    -webkit-animation-name:"ShowParallelogram";
+    -webkit-animation-duration:1s;
+    -webkit-animation-iteration-count:1;
+
+
+    padding:30px;
+    font-style: normal;
+    text-align:justify;
+    font-size:20px;
+ /*   color:#ddb500;*/
+    color: lightyellow;
+    width: 800px;
+    height: 100px;
+    transform: skewX( -20deg ); /* "Pochylenie" - tworzy kształt trapezu*/
+    background-color: #4A556CFF;
+    margin: 50px auto 0;
+    box-shadow: 3px 2px 2px black;
+}
+
+
+@keyframes ShowParallelogram /*Mozilla*/
+{
+    0% { width: 1px;}
+    0% {height: 1px;}
+    0% {font-size:1px;}
+    100% { width:800px; }
+    100% {height:100px;}
+}
+
+
+#logButton
+{
+    /*    background-color:#6E4C1EFF;*/
+    background-color: #8F6E3FFF;
+    border: none;
+    border-radius: 8px;
+    height: 30px;
+    width: 120px;
+   /* color: #ddb500;*/
+    color:lightyellow;
+    text-align: center;
+    font-size:15px;
+    font-family: 'Permanent Marker', cursive;
+    position: absolute;
+    right: 20px;
+    box-shadow: 5px 5px 3px #292929; /*"Cień"*/
+    outline-style:none; /*Działa dla chrome*/
+
+    /*Usuń zaznaczenie po kliknięciu*/
+}
+
+#logButton:hover
+{
+    background-color:#7F5D2FFF;
+}

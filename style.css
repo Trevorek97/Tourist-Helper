@@ -1,36 +1,46 @@
-
-
 body
 {
-    /*background-image: linear-gradient(to bottom, #ffd700, #7F5D2FFF);*/ /*#28334aff*/
-    background-color: #f78b07;
+    background-color: #C99E10;
     padding: 0;
     margin: 0;
     -moz-user-select: none;
     user-select:none;
+
 }
+
 
 header
 {
-    /*background-color: #28334AFF;
-    */height:50px;
-    background-image: linear-gradient(to bottom,#28334AFF,#4A556CFF ); /*#28334aff*/
+    width:100%;
+    height:50px;
+    background-image: linear-gradient(to bottom, #141015, #363237);
+}
 
+
+footer
+{
+    background-image: linear-gradient(to bottom, #141015, #363237);
+    height: 50px;
+    position: fixed;
+    bottom:0;
+    width: 100%;
+    color:whitesmoke;
+    text-align: right;
+}
+
+#github
+{
+    text-decoration: none;
+    color:lightyellow;
+}
+
+#github:hover
+{
+    color: darkcyan;
 }
 
 #title
 {
-    /*MOZILLA*/
-    animation-name:"ShowTitle"; /* Nazwa animacji*/
-    animation-duration:1s; /* Czas trwania animacji*/
-    animation-iteration-count:1; /* Ile razy wykona się animacja?*/
-
-    /*CHROME*/
-    -webkit-animation-name:"ShowTitle";
-    -webkit-animation-duration:1s;
-    -webkit-animation-iteration-count:1;
-
-
     font-size:25px;
     color: #ddb500;
     text-align:left;
@@ -39,90 +49,67 @@ header
     padding-left:20px;
     text-shadow: 1px 1px 2px darkred;
     font-family: 'Pacifico', cursive;
+    display: inline-block;
+    text-decoration:none;
 }
 
-#title:hover
-{
-    color: #bb9300;
+#title a{
+    text-decoration: none;
+    color: #ddb500;
     text-shadow: 1px 1px 2px darkred;
-
+    font-family: 'Pacifico', cursive;
 }
-
-
-@keyframes ShowTitle /*Mozilla*/
-{
-    0% { padding-left:100%; }
-    100% { padding-left:20px; }
-}
-
-
-footer
-{
-    background-color: #28334AFF;
-    height: 50px;
-    position: absolute;
-    bottom:0;
-    width: 100%;
-    color:whitesmoke;
-    text-align: right;
-}
-
 
 #topMenu
 {
-    background-color: #4A556CFF;
-    height:45px;
+    background-color: #363237;
+    height:50px;
     width: 100%;
 }
 
 
 #parallelogram
 {
-    /*MOZILLA*/
     animation-name:"ShowParallelogram"; /* Nazwa animacji*/
     animation-duration:1s; /* Czas trwania animacji*/
     animation-iteration-count:1; /* Ile razy wykona się animacja?*/
-
-    /*CHROME*/
     -webkit-animation-name:"ShowParallelogram";
     -webkit-animation-duration:1s;
     -webkit-animation-iteration-count:1;
 
 
     padding:30px;
+    font-family: sans-serif;
     font-style: normal;
     text-align:justify;
-    font-size:20px;
- /*   color:#ddb500;*/
+    font-size:1.5vw;
+    text-shadow: 1px 0 1px black;
     color: lightyellow;
-    width: 800px;
-    height: 100px;
+    width: 60%;
+    height: auto;
     transform: skewX( -20deg ); /* "Pochylenie" - tworzy kształt trapezu*/
-    background-color: #4A556CFF;
+    background-color: #585459;
+    border-radius:20px;
     margin: 50px auto 0;
     box-shadow: 3px 2px 2px black;
 }
 
 
-@keyframes ShowParallelogram /*Mozilla*/
+@keyframes ShowParallelogram
 {
-    0% { width: 1px;}
-    0% {height: 1px;}
-    0% {font-size:1px;}
-    100% { width:800px; }
-    100% {height:100px;}
+    0% { width: 1%;}
+    100% { width:60%; }
+    100% {font-size: 1.5vw;}
 }
 
 
 #logButton
 {
-    /*    background-color:#6E4C1EFF;*/
-    background-color: #8F6E3FFF;
+    background-color:#6E646F;
     border: none;
     border-radius: 8px;
     height: 30px;
     width: 120px;
-   /* color: #ddb500;*/
     color:lightyellow;
     text-align: center;
     font-size:15px;
@@ -131,11 +118,43 @@ footer
     right: 20px;
     box-shadow: 5px 5px 3px #292929; /*"Cień"*/
     outline-style:none; /*Działa dla chrome*/
-
-    /*Usuń zaznaczenie po kliknięciu*/
 }
+
 
 #logButton:hover
 {
-    background-color:#7F5D2FFF;
+    background-color:#5D535E;
+    height:35px;
+    width: 130px;
+    cursor: pointer;
+}
+
+.imgcontainer
+{
+    position:relative;
+}
+
+.imgmenu
+{
+    position:relative;
+    border-radius:30px;
+    width: 40%;
+    height:200px;
+    margin: 0 auto 5px 30%; /*top right bottom left*/
+    cursor:pointer;
+}
+
+
+.imgtext
+{
+    position: absolute;
+    bottom: 20%;
+    width:100%;
+    margin: 0 auto;
+    text-align:center;
+    font-size:25px;
+    color:lightyellow;
+    font-family: sans-serif;
+    text-shadow: 3px 3px 1px black;
+
 }

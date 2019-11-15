@@ -33,6 +33,10 @@ input
 
 .radio
 {
+    /**
+    TODO
+    Na telefonie nie pokazuje radio buttonów
+     */
     display:inline;
     width: 0;
     float: left;
@@ -51,6 +55,7 @@ textarea
     resize: none;
     text-align:left;
     border: none;
+    border-radius:5px;
     background-color: lightgray;
     color: #141015;
 }
@@ -63,7 +68,8 @@ textarea
     border:none;
     padding:8px 20px 8px 20px;
     width: 50%;
-    margin-top:20px;
+    margin: 20px;
+    text-align:center;
     font-size:20px;
 }
 

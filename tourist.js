@@ -13,7 +13,7 @@ function showParallelogramText()
 function mouseOnMenu()
 {
     var img=document.querySelectorAll(".imgmenu");
-    var pages = ["aktualnosci", "zaplanuj", "mapa", "o_nas", "kontakt"];
+    var pages = ["aktualnosci", "zaplanuj", "mapa", "o-nas", "kontakt"];
     for(let i=0;i<6;i++)
     {
         img[i].style.filter="grayscale(1) blur(2px)";

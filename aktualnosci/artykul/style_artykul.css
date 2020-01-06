@@ -1,0 +1,56 @@
+.article {
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 10px 20px 10px 20px;
+    background-color: #ccbb7b;
+    color: #292929
+}
+
+.article_title {
+    font-size: 25px;
+    text-align: center;
+    font-family: Ubuntu;
+}
+
+a {
+    text-decoration:none;
+    color:#292929;
+}
+
+a:hover {
+    color: #6E646F;
+}
+
+.article_info {
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.article_content {
+    padding:10px;
+    border-radius:15px;
+    width: 95%;
+    margin: 10px auto 10px auto;
+    font-size:20px;
+    height: auto;
+    background-image: linear-gradient(to bottom, #fafafa, #e1e1e7);
+    display: block;
+    text-align: justify;
+}
+
+.article_button {
+    margin-top:10px;
+    padding:5px 10px 5px 10px;
+    width: 150px;
+    height:auto;
+    text-align:center;
+    border-radius:5px;
+    background-color: #292929;
+    color: #ccbb7b;
+}
+
+.return_button {
+    margin: 0 auto;
+}

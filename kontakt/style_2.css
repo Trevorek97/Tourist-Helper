@@ -1,5 +1,4 @@
-form
-{
+form {
     width:50%;
     margin: 0 auto;
     background-image: linear-gradient(to bottom, #585459, #363237);
@@ -8,18 +7,16 @@ form
     border-radius:30px;
 }
 
-form>h2
-{
+form>h2 {
     text-align:center;
 }
-label
-{
+
+label {
     display:block;
     text-align:center;
 }
 
-input
-{
+input {
     display:block;
     width:80%;
     margin: 0 auto;
@@ -31,25 +28,11 @@ input
 
 }
 
-.radio
-{
-    /**
-    TODO
-    Na telefonie nie pokazuje radio buttonów
-     */
+input.radio {
     display:inline;
-    width: 0;
-    float: left;
-
 }
 
-.radiolabel
-{
-    float:left;
-}
-
-textarea
-{
+textarea {
     width: 100%;
     height: 100%;
     resize: none;
@@ -61,8 +44,7 @@ textarea
 }
 
 
-#submitMessage
-{
+#submitMessage {
     background-color: #DAAF21;
     border-radius:20px;
     border:none;
@@ -73,7 +55,6 @@ textarea
     font-size:20px;
 }
 
-#submitMessage:hover
-{
+#submitMessage:hover {
     background-color: #C99E10;
 }

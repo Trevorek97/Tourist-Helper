@@ -13,18 +13,19 @@ function showParallelogramText()
 function mouseOnMenu()
 {
     var img=document.querySelectorAll(".imgmenu");
-    var pages = ["aktualnosci", "zaplanuj", "mapa", "o-nas", "kontakt"];
-    for(let i=0;i<6;i++)
+    var pages = ["aktualnosci", "zaplanuj", "mapa", "o-nas", "kontakt", "faq"];
+    for(let i=0;i<pages.length;i++)
     {
-        img[i].style.filter="grayscale(1) blur(2px)";
+        img[i].style.filter="grayscale(1) blur(5px)";
 
         img[i].onmouseout=function()
         {
-            this.style.filter="grayscale(1) blur(2px)";
+            this.style.filter="grayscale(1) blur(5px)";
         };
         img[i].onmouseover=function()
         {
             this.style.filter="blur(0px)";
+            this.style.border="2px solid #A77C00";
 
         };
 
@@ -46,3 +47,14 @@ window.onload=function()
     };
 };
 
+for (var i=-100;i<100 || i%2 == 0;i++){
+
+    console.log("lb: " + i);
+
+}
+
+let article;
+function readArticle(id) {
+    window.open("czytaj");
+    article = id;
+}

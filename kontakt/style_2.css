@@ -58,3 +58,36 @@ textarea {
 #submitMessage:hover {
     background-color: #C99E10;
 }
+
+
+.send-info {
+    width:60%;
+    background-color: #ccbb7b;
+    border-radius:50px;
+    padding:20px 30px 20px 30px;
+    margin: 0 auto;
+}
+
+.send-title {
+    font-size:18px;
+    color: #292929;
+    text-align:center;
+    font-weight:600;
+    margin-bottom:30px;
+}
+
+.send-return {
+    background-color: #DAAF21;
+    border-radius:20px;
+    border:none;
+    padding:8px 20px 8px 20px;
+    width: 40%;
+    text-align:center;
+    font-size:20px;
+    cursor:pointer;
+    margin: 0 auto;
+}
+
+.send-return:hover {
+    background-color: #C99E10;
+}

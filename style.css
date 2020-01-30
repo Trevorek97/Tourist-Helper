@@ -117,6 +117,7 @@ footer {
     cursor: pointer;
 }
 
+
 .imgcontainer {
     position:relative;
 }
@@ -142,12 +143,42 @@ footer {
     text-shadow: 3px 3px 1px black;
 }
 
-#container
-{
+#container {
     width:80%;
     margin: 0 auto;
     background-image: linear-gradient(to bottom, #585459, #363237);
     color:#DAAF21;
     padding: 10px 20px 30px 20px;
     border-radius:30px;
+}
+
+.username {
+    margin-left:10px;
+    color: #DAAF21;
+    font-size:20px;
+    font-weight:600;
+    text-shadow: 1px 1px black;
+}
+
+.avatar {
+    margin-left:10px;
+    width:35px;
+    height:35px;
+    vertical-align: middle;
+    border: 3px solid silver;
+    border-radius:50px;
+}
+
+.avatar:hover {
+    border: 3px solid #DAAF21;
+}
+
+#tooltip-addarticle {
+    background-color:#292929;
+    display:none;
+    position:absolute;
+    color:lightyellow;
+    padding:10px;
+    border-radius:5px;
+
 }

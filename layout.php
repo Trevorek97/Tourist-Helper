@@ -57,7 +57,11 @@
         $pageTitle[26] = "Mapa";
         $pageTitle[27] = "Zarejestruj się";
         $pageTitle[28] = "Użytkownicy - Panel administracyjny";
-
+        $pageTitle[29] = "Potwierdź wykonanie zmiany - Panel administracyjny";
+        $pageTitle[30] = "Użytkownik $var usunięty! - Panel administracyjny";
+        $pageTitle[31] = "Nowy administrator $var! - Panel administracyjny";
+        $pageTitle[32] = "Usunięty administrator $var! - Panel administracyjny";
+        $pageTitle[33] = "Pytania użytkowników - Panel administracyjny";
         return "<title>" . $pageTitle[$id] . $pageTitle[0] . "</title>";
     }
 

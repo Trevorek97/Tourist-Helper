@@ -211,3 +211,73 @@ textarea {
     background-color: #a78702;
     color: whitesmoke;
 }
+
+.button-deleteUser {
+    background-color: #fc0c30;
+    color: #ffffff;
+    border-radius:10px;
+    width: 50%;
+    margin:0 auto;
+ }
+
+.button-deleteUser:hover {
+    background-color: #da0a10;
+ }
+
+.button-setAdmin {
+    background-color: #14e00d;
+    color: #ffffff;
+    border-radius:10px;
+    width: 50%;
+    margin:0 auto;
+}
+
+.button-setAdmin:hover {
+    background-color: #02c00b;
+}
+
+.button-public {
+    background-color: #DAAF21;
+    color: #ffffff;
+    border-radius:10px;
+    width: 50%;
+    margin:0 auto;
+}
+
+.button-public:hover {
+    background-color: #b88d00;
+}
+
+.button-read {
+    background-color: #0da4e0;
+    color: #ffffff;
+    border-radius:10px;
+    width: 50%;
+    margin:0 auto;
+}
+
+.button-read:hover {
+    background-color: #0b82c0;
+}
+
+.answer {
+    width:100%;
+    height:300px;
+    background-color: white;
+    margin: 0 auto;
+}
+
+.content {
+    width:80%;
+    height:auto;
+    padding:10px;
+    background-color: #292929;
+    color: #DAAF21;
+    font-size:20px;
+    margin: 0 auto;
+    border:1px solid black;
+    border-radius:10px;
+    text-align:justify;
+    margin-bottom:20px;
+
+}

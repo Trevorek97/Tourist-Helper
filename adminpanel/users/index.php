@@ -4,9 +4,8 @@
     session_start();
     include("auth.php");
 
-    $sql = "select login, email, name, surname, regdate, admin from users";
-    $result = $connection->query($sql);
-?>
+    $sql = "select id, login, email, name, surname, registerdate, admin from users";
+    $result = $connection->query($sql) or die($connection->error);?>
 
 <!DOCTYPE html>
 <html lang="pl-PL">
@@ -27,31 +26,36 @@
     ?>
     <br><br><br>
 
-    <div class="admcontainer" style="width:80%">
+    <div class="admcontainer" style="width:90%">
         <div class="flex-container-2">
-            <div class='column-flex-1' style="flex: 0 0  10%"><h3>ID</h3></div>
-            <div class='column-flex-2'><h3>Login</h3></div>
-            <div class='column-flex-2'><h3>Email</h3></div>
-            <div class='column-flex-2'><h3>Imię</h3></div>
-            <div class='column-flex-2'><h3>Nazwisko</h3></div>
-            <div class='column-flex-2'><h3>Użytkownik od</h3></div>
-            <div class='column-flex-2'><h3>Usuń</h3></div>
-            <div class='column-flex-2'><h3>Ban</h3></div>
-            <div class='column-flex-2'><h3>Admin</h3></div>
+            <div class='column-flex-1' style='flex:5%'><h3>ID</h3></div>
+            <div class='column-flex-2' style='flex:16%'><h3>Login</h3></div>
+            <div class='column-flex-2' style='flex:16%'><h3>Email</h3></div>
+            <div class='column-flex-2' style='flex:16%'><h3>Imię</h3></div>
+            <div class='column-flex-2' style='flex:16%'><h3>Nazwisko</h3></div>
+            <div class='column-flex-2' style='flex:16%'><h3>Użytkownik od</h3></div>
+            <div class='column-flex-2' style='flex:7.5%'><h3>Usuń</h3></div>
+            <div class='column-flex-2' style='flex:7.5%'><h3>Admin</h3></div>
 
             <?php
             while ($row = $result->fetch_assoc())
             {
                 $id = $row["id"];
-                $title = $row["title"];
-                echo "<div class='column-flex-1' style='flex:0 0 10%''>" . $row["id"] . "</div>";
-                echo "<div class='column-flex-2'>" . $row["login"] . "</div>";
-                echo "<div class='column-flex-2'>" . $row["email"] . "</div>";
-                echo "<div class='column-flex-2'>" . $row["name"] . "</div>";
-                echo "<div class='column-flex-2'>" . $row["surname"] . "</div>";
-                echo "<div class='column-flex-2'>" . $row["regdate"] . "</div>";
-
-                echo "<div class='column-flex-2'>" . "<div class='button-delete' onclick=\"document.location='deleted/index.php?deleted=$id&title=$title'\">X</div>" . "</div>";
+                echo "<div class='column-flex-1' style='flex:5%'>" . $row["id"] . "</div>";
+                echo "<div class='column-flex-2' style='flex:16%'>" . $row["login"] . "</div>";
+                echo "<div class='column-flex-2' style='flex:16%'>" . $row["email"] . "</div>";
+                echo "<div class='column-flex-2' style='flex:16%'>" . $row["name"] . "</div>";
+                echo "<div class='column-flex-2' style='flex:16%'>" . $row["surname"] . "</div>";
+                echo "<div class='column-flex-2' style='flex:16%'>" . $row["registerdate"] . "</div>";
+                if($_SESSION['login'] !== $row["login"]) {
+                    echo "<div class='column-flex-2' style='flex:7.5%'>" . "<div class='button-deleteUser' onclick='window.location=\"userchanges/index.php?reason=1&id=$id\"'>X</div>" . "</div>";
+                } else {
+                    echo "<div class='column-flex-2' style='flex:7.5%'></div>"; }
+                if ($row["admin"] == '0') {
+                    echo "<div class='column-flex-2' style='flex:7.5%'>" . "<div class='button-setAdmin' onclick='window.location=\"userchanges/index.php?reason=2&id=$id\"'>V</div>" . "</div>";
+                } else {
+                    echo "<div class='column-flex-2' style='flex:7.5%'>" . "<div class='button-deleteUser' onclick='window.location=\"userchanges/index.php?reason=3&id=$id\"'>X</div>" . "</div>";
+                }
             }
             ?>
         </div>

@@ -47,7 +47,7 @@
         $pageTitle[15] = "$var - Przewodnik"; //Informacje o lokacji
         $pageTitle[16] = "O nas";
         $pageTitle[17] = "Kontakt";
-        $pageTitle[19] = "FAQ";
+        $pageTitle[19] = "Pytania i odpowiedzi";
         $pageTitle[20] = "Dodano nowy artykuł - Panel administracyjny";
         $pageTitle[21] = "Usunięto artykuł - Panel administracyjny";
         $pageTitle[22] = "Dodano nową lokację - Panel administracyjny";

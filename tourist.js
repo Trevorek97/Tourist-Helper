@@ -10,10 +10,15 @@ function showParallelogramText(name="")
 }
 
 
-function mouseOnMenu()
+function mouseOnMenu($status)
 {
     var img=document.querySelectorAll(".imgmenu");
-    var pages = ["aktualnosci", "wydarzenia", "przewodnik","zaplanuj", "mapa", "o-nas", "kontakt", "faq", "adminpanel"];
+    if($status == '0') {
+        var pages = ["aktualnosci", "wydarzenia", "przewodnik", "mapa", "o-nas", "kontakt", "faq"];
+    } else {
+        var pages = ["aktualnosci", "wydarzenia", "przewodnik", "zaplanuj", "mapa", "o-nas", "kontakt", "faq", "adminpanel"];
+    }
+
     for(let i=0;i<pages.length;i++)
     {
         img[i].style.filter="grayscale(1) blur(5px)";

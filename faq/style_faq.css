@@ -1,0 +1,31 @@
+.question-container {
+    width:80%;
+    background-image: linear-gradient(to bottom, #292929, #363237);
+    padding:20px;
+    border-radius:50px;
+    margin: 0 auto;
+}
+
+.question {
+    text-align:justify;
+    font-size:16px;
+    color:#DAAF21;
+    font-weight:600;
+    padding:5px;
+}
+
+.answer {
+    text-align:justify;
+    font-size:17px;
+    color:#292929;
+    padding:5px;
+    margin: 10px 20px 20px 20px;
+    background-color: whitesmoke;
+    border-radius:5px;
+}
+
+.space {
+    height:10px;
+    width:100%;
+
+}

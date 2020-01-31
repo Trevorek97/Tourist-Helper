@@ -1,7 +1,12 @@
 <?php
-    include_once('../database/database.php');
-    include_once('../layout.php');
+    include_once ('../database/database.php');
+    include_once ('../layout.php');
+    session_start();
+
+    $sql = "select content, answer from user_message where public = '1' order by id desc";
+    $result = $connection->query($sql);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pl-PL">
@@ -12,29 +17,22 @@
     <script type="text/javascript src=script.js"></script>
     <link rel="icon" href="../img/zaplanuj.jpg" type="image/x-icon"> <!-- miniaturka na pasku-->
     <link rel="stylesheet" type="text/css" href="../style.css">
-
-
+    <link rel="stylesheet" type="text/css" href="style_faq.css">
 </head>
 <body>
-<header>
-    <div id="title"><a href="../">Tourist Helper</a></div>
-    <div id="topMenu">
-        <button id="logButton">Zaloguj</button>
-    </div>
-</header>
- <br><br><br>
-
-    TEMPLATE
-
-    <!--
-    TODO
-    Tu będą wstawiane newsy pobierane z bazy danych - najnowsze ciekawostki, wydarzenia itp.
-    * Określ max liczbę artykułów na stronie
-    * Przewijanie do kolejnych stron
-    * Fragment artykułu pokazywany bez kliknięcia
-    -->
-    <br><br><br>
-
-    <?php echo $footer;?>
+<?php
+if(isset($_SESSION['login'])) $sesLog = $_SESSION['login'];
+else $sesLog = "";
+echo showHeader($sesLog, '../index.php', '../profile/index.php', '../login/logout.php', '../login/register.php', '../login/login.php', '../img/avatars/default.png');
+?>
+<br><br><br>
+        <?php while ($row = $result->fetch_assoc()) {
+            echo "<div class='question-container'>";
+            echo "<div class='question'>" . $row["content"] . "</div>";
+            echo "<div class='answer'>" . $row["answer"] ."</div>";
+            echo "</div>";
+            echo "<div class='space'></div>";
+        } ?>
+<?php echo $footer;?>
 </body>
 </html>

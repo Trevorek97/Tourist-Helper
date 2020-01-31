@@ -3,7 +3,9 @@
     include_once('layout.php');
     session_start();
 
+    $status=0;
     if(isset($_SESSION['login'])) {
+        $status=1;
         $log = $_SESSION['login'];
         $sql = "select admin from users where login ='$log'";
         $result = $connection->query($sql);
@@ -45,10 +47,12 @@
             <div class="imgtext">Przewodnik</div>
         </div>
 
-        <div class="imgcontainer">
-            <img class="imgmenu" src="img/zaplanuj.jpg" alt="Zaplanuj!">
-            <div class="imgtext">Zaplanuj!</div>
-        </div>
+        <?php if(isset($_SESSION['login'])) {
+            echo "<div class=\"imgcontainer\">";
+            echo "<img class=\"imgmenu\" src=\"img/zaplanuj.jpg\" alt=\"Zaplanuj!\">";
+            echo "<div class=\"imgtext\">Zaplanuj!</div>";
+            echo "</div>"; }
+        ?>
 
         <div class="imgcontainer">
             <img class="imgmenu" src="img/mapa.jpg" alt="Mapa">
@@ -67,7 +71,7 @@
 
         <div class="imgcontainer">
             <img  class="imgmenu" src="img/faq.jpg" alt="FAQ">
-            <div class="imgtext">FAQ</div>
+            <div class="imgtext">Pytania i odpowiedzi</div>
         </div>
 
     <?php if(isset($_SESSION['login']) && $row["admin"] == '1') {
@@ -81,7 +85,7 @@
 
     <script>
         setTimeout(showParallelogramText, 990);
-        mouseOnMenu();
+        mouseOnMenu(<?php echo json_encode($status);?>);
     </script>
 
 </body>

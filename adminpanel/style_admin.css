@@ -281,3 +281,8 @@ textarea {
     margin-bottom:20px;
 
 }
+
+.photo-flex {
+ margin: 0 auto !important;
+}
+.photo-flex > img { object-fit:cover !important; max-width:300px !important; max-height:100px !important}

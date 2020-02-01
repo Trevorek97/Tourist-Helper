@@ -50,11 +50,16 @@
                 if($_SESSION['login'] !== $row["login"]) {
                     echo "<div class='column-flex-2' style='flex:7.5%'>" . "<div class='button-deleteUser' onclick='window.location=\"userchanges/index.php?reason=1&id=$id\"'>X</div>" . "</div>";
                 } else {
-                    echo "<div class='column-flex-2' style='flex:7.5%'></div>"; }
-                if ($row["admin"] == '0') {
-                    echo "<div class='column-flex-2' style='flex:7.5%'>" . "<div class='button-setAdmin' onclick='window.location=\"userchanges/index.php?reason=2&id=$id\"'>V</div>" . "</div>";
+                    echo "<div class='column-flex-2' style='flex:7.5%'></div>";
+                }
+                if($_SESSION['login'] == $row["login"]) {
+                    echo "<div class='column-flex-2' style='flex:7.5%'></div>";
                 } else {
-                    echo "<div class='column-flex-2' style='flex:7.5%'>" . "<div class='button-deleteUser' onclick='window.location=\"userchanges/index.php?reason=3&id=$id\"'>X</div>" . "</div>";
+                    if ($row["admin"] == '0') {
+                        echo "<div class='column-flex-2' style='flex:7.5%'>" . "<div class='button-setAdmin' onclick='window.location=\"userchanges/index.php?reason=2&id=$id\"'>V</div>" . "</div>";
+                    } else {
+                        echo "<div class='column-flex-2' style='flex:7.5%'>" . "<div class='button-deleteUser' onclick='window.location=\"userchanges/index.php?reason=3&id=$id\"'>X</div>" . "</div>";
+                    }
                 }
             }
             ?>

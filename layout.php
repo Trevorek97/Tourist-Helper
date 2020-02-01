@@ -62,6 +62,7 @@
         $pageTitle[31] = "Nowy administrator $var! - Panel administracyjny";
         $pageTitle[32] = "Usunięty administrator $var! - Panel administracyjny";
         $pageTitle[33] = "Pytania użytkowników - Panel administracyjny";
+        $pageTitle[34] = "Zarządzaj zdjęciami - Panel administracyjny";
         return "<title>" . $pageTitle[$id] . $pageTitle[0] . "</title>";
     }
 

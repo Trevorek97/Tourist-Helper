@@ -47,9 +47,9 @@ echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../lo
     <div class="flex-container-2">
         <div class='column-flex-1' style='flex:5%'><h3>ID</h3></div>
         <div class='column-flex-2' style='flex:16%'><h3>Temat</h3></div>
-        <div class='column-flex-2' style='flex:16%'><h3>Imię</h3></div>
-        <div class='column-flex-2' style='flex:16%'><h3>Nazwisko</h3></div>
-        <div class='column-flex-2' style='flex:16%'><h3>Email</h3></div>
+        <div class='column-flex-2' style='flex:15%'><h3>Imię</h3></div>
+        <div class='column-flex-2' style='flex:15%'><h3>Nazwisko</h3></div>
+        <div class='column-flex-2' style='flex:15%'><h3>Email</h3></div>
         <div class='column-flex-2' style='flex:7.5%'><h3>Czytaj</h3></div>
         <div class='column-flex-2' style='flex:7.5%'><h3>Odpowiedz</h3></div>
         <div class='column-flex-2' style='flex:7.5%'><h3>Usuń</h3></div>
@@ -60,9 +60,9 @@ echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../lo
             $id = $row["id"];
             echo "<div class='column-flex-1' style='flex:5%'>" . $row["id"] . "</div>";
             echo "<div class='column-flex-2' style='flex:16%'>" . $topic[$row["topic"]-1] . "</div>";
-            echo "<div class='column-flex-2' style='flex:16%'>" . $row["name"] . "</div>";
-            echo "<div class='column-flex-2' style='flex:16%'>" . $row["surname"] . "</div>";
-            echo "<div class='column-flex-2' style='flex:16%'>" . $row["mail"] . "</div>";
+            echo "<div class='column-flex-2' style='flex:15%'>" . $row["name"] . "</div>";
+            echo "<div class='column-flex-2' style='flex:15%'>" . $row["surname"] . "</div>";
+            echo "<div class='column-flex-2' style='flex:15%'>" . $row["mail"] . "</div>";
             echo "<div class='column-flex-2' style='flex:7.5%'>" . "<div class='button-read' onclick='window.location=\"answer/index.php?reason=5&id=$id\"'>V</div>" . "</div>";
             if($row["answer"] == '') {
                 echo "<div class='column-flex-2' style='flex:7.5%'>" . "<div class='button-public' onclick='window.location=\"answer/index.php?reason=1&id=$id\"'>V</div>" . "</div>";

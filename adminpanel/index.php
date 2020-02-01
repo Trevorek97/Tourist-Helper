@@ -52,7 +52,11 @@
                         Użytkownicy
                     </td>
                 </tr>
-
+                <tr>
+                    <td onclick="document.location='photos/index.php'">
+                        Zarządzaj zdjęciami
+                    </td>
+                </tr>
             </table>
 
         </div>

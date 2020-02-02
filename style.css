@@ -165,7 +165,7 @@ footer {
     width:35px;
     height:35px;
     vertical-align: middle;
-    border: 3px solid silver;
+    border: 3px solid black;
     border-radius:50px;
 }
 
@@ -182,3 +182,47 @@ footer {
     border-radius:5px;
 
 }
+
+.return {
+    background-color: #C99E10;
+    color: #292929;
+    border-radius:20px;
+    border:none;
+    padding:8px 20px 8px 20px;
+    width: 40%;
+    text-align:center;
+    font-weight:600;
+    font-size:20px;
+    cursor:pointer;
+    margin: 0 auto;
+}
+
+.return:hover {
+    background-color: #A77C00;
+}
+
+.return-container {
+    width:50%;
+    background-image: linear-gradient(to bottom, #292929, #363237);
+    padding:20px;
+    border-radius:50px;
+    margin: 0 auto;
+}
+
+
+.map-container {
+    width:400px;
+    height:400px;
+    margin: 0 auto;
+    background-color: #A77C00;
+
+}
+
+.map {
+    width:400px;
+    height:400px;
+    margin-left:50px;
+    margin-right:auto;
+    border:1px solid black;
+
+ }

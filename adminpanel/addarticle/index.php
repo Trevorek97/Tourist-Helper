@@ -3,6 +3,7 @@
     include_once ('../../layout.php');
     session_start();
     include("auth.php");
+    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     $sql = "select id as 'id', topic as 'topic' from article_topic";
     $result = $connection->query($sql);
 ?>
@@ -22,7 +23,7 @@
     <?php
         if(isset($_SESSION['login'])) $sesLog = $_SESSION['login'];
         else $sesLog = "";
-        echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../login/logout.php', '../../login/register.php', '../../login/login.php', '../../img/avatars/default.png');
+        echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../login/logout.php', '../../login/register.php', '../../login/login.php', '../../img/avatars/'.$img.'.png');
     ?>
     <br><br><br>
 

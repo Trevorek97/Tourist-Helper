@@ -17,6 +17,6 @@
         //echo("Nawiązano połączenie z bazą danych!");
         //echo("Nazwa bazy danych: " . $dbname);
     }
-
+    $img='';
 ?>
 

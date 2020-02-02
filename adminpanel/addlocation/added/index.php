@@ -4,7 +4,7 @@
     include_once('addlocation.php');
     session_start();
     include("auth.php");
-
+    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     $link = $_POST["link"];
     $type = $_POST["type"];
     $voivodeship = $_POST["voivodeship"];
@@ -13,8 +13,14 @@
     $number = $_POST["number"];
     $postcode = $_POST["postcode"];
     $name = $_POST["name"];
-    $position = $_POST["position"];
-    $description = $_POST["description"];
+$position1 = $_POST["position1"];
+$position2 = $_POST["position2"];
+$position3 = $_POST["position3"];
+$position4 = $_POST["position4"];
+$position5 = $_POST["position5"];
+$position6 = $_POST["position6"];
+$position = [$position1, $position2, $position3, $position4, $position5, $position6];
+$description = $_POST["description"];
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +37,7 @@
     <?php
         if(isset($_SESSION['login'])) $sesLog = $_SESSION['login'];
         else $sesLog = "";
-        echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '../../../login/logout.php', '../../../login/register.php', '../../../login/login.php', '../../../img/avatars/default.png');
+        echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '../../../login/logout.php', '../../../login/register.php', '../../../login/login.php', '../../../img/avatars/'.$img.'.png');
     ?>
     <br><br><br>
     <?php
@@ -50,7 +56,7 @@
         }
         $position = str_replace(",", ".", $position);
         $sql = "insert into location(name, description, type, city, street, number, postcode, position)
-        values('$name', '$description', '$type', '$id_city', '$street', '$number', '$postcode', '$position')";
+        values('$name', '$description', '$type', '$id_city', '$street', '$number', '$postcode', '".json_encode($position)."')";
         $connection->query($sql);
 
         $sql = "select id from location where name='$name' and description='$description'";

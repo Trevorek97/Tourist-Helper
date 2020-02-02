@@ -2,6 +2,7 @@
     include_once ('../../../database/database.php');
     include_once ('../../../layout.php');
     session_start();
+    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     $id = $_GET["id"];
     if(isset($_SESSION['login'])) $log = $_SESSION['login'];
     else $log = "";
@@ -61,7 +62,7 @@
 <body>
 <?php
 
-    echo showHeader($log, '../../../index.php', '../../../profile/index.php', '../../../login/logout.php', '../../../login/register.php', '../../../login/login.php', '../../../img/avatars/default.png');
+    echo showHeader($log, '../../../index.php', '../../../profile/index.php', '../../../login/logout.php', '../../../login/register.php', '../../../login/login.php', '../../../img/avatars/'.$img.'.png');
 ?>
     <br><br><br>
 
@@ -93,10 +94,6 @@
                 <span class="details-title">Kod pocztowy:</span>
                 <span class="details-info"><?php echo $location["postcode"] ?></span>
             </div>
-            <div>
-                <span class="details-title">Lokalizacja:</span>
-                <span class="details-info"><?php echo $location["position"] ?></span>
-            </div>
         </div>
         <div class="photos-container">
             <?php
@@ -124,6 +121,7 @@
             }
 
              } ?>
+        <div class='guide-map' onclick='window.location="../../../mapa/index.php?location=<?php echo $id;?>"'>Zobacz na mapie!</div>
 
         <div class="guide-comment-container">
             <div class="guide-comment-title">Oceny</div>

@@ -1,0 +1,117 @@
+.profile-container {
+    background-image: linear-gradient(to bottom, #585459, #363237);
+    margin: 0 auto;
+    width:40%;
+    border-radius:50px;
+    padding: 20px 60px 20px 60px;
+}
+
+.profile-name {
+    color: #DAAF21;
+    font-size:30px;
+    text-align:center;
+    font-weight:600;
+    margin-bottom:30px;
+    text-shadow: 1px 1px black;
+
+}
+
+.profile-photo {
+    width:30%;
+    height:auto;
+    margin-left:35%;
+    margin-right:35%;
+    margin-bottom:20px;
+    border-radius: 50%;
+    border:5px solid #DAAF21;
+}
+
+.profile-button {
+    margin: 0 auto;
+    background-color: #DAAF21;
+    color:whitesmoke;
+    padding:10px 20px 10px 20px;
+    text-align:center;
+    margin-bottom:10px;
+    width:50%;
+    height:20px;
+    border-radius:20px;
+    text-shadow: 1px 1px black;
+    border:1px solid black;
+    font-weight:600;
+}
+
+.profile-button:hover {
+    background-color: #B88d00;
+    cursor:pointer;
+}
+
+.button-photo {
+    background-color:#0b82c0;
+    font-size:40px;
+    color: whitesmoke;
+    cursor:pointer;
+    width:200px;
+    height:50px;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.button-photo:hover {
+    background-color: #0970a0;
+    cursor:pointer;
+}
+
+.photo {
+    width:200px;
+    height:200px;
+    margin-left:auto;
+    margin-right:auto;
+ }
+
+.photo >img { width:200px !important; height:200px !important}
+
+.button-confirm {
+    width:250px;
+    padding:10px;
+    font-size:20px;
+    background-color: #029300;
+    color: whitesmoke;
+    text-align:center;
+    font-weight:600;
+    border-radius:10px;
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.button-confirm:hover {
+    background-color: #007100;
+    cursor:pointer;
+}
+
+.button-confirm-2 {
+    width:250px;
+    padding:10px;
+    font-size:20px;
+    background-color: red;
+    color: whitesmoke;
+    text-align:center;
+    font-weight:600;
+    border-radius:10px;
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.button-confirm-2:hover {
+    background-color: darkred;
+    cursor:pointer;
+}
+
+.favourite-info {
+    font-size:20px;
+    font-weight:600;
+    color: #DAAF21;
+}

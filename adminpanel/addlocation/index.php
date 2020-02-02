@@ -3,7 +3,7 @@
     include_once('../../layout.php');
     session_start();
     include("auth.php");
-
+    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     $sql1 = "select id as 'id', type as 'type' from type";
     $result1 = $connection->query($sql1);
 
@@ -27,7 +27,7 @@
     <?php
         if(isset($_SESSION['login'])) $sesLog = $_SESSION['login'];
         else $sesLog = "";
-        echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../login/logout.php', '../../login/register.php', '../../login/login.php', '../../img/avatars/default.png');
+        echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../login/logout.php', '../../login/register.php', '../../login/login.php', '../../img/avatars/'.$img.'.png');
     ?>
     <br><br><br>
     <form action="added/index.php" method="POST">
@@ -36,7 +36,7 @@
 
         <div class="flex-container">
             <div class="first-column">Link do zdjęć</div>
-            <div class="second-column"> <input type="url" name="link" placeholder="Podaj link do strony"> </div>
+            <div class="second-column"> <input type="url" name="link" placeholder="Podaj link do strony" > </div>
             <div class="first-column">Rodzaj lokacji</div>
             <div class="second-column">
                 <select style="width: 80%" name="type" id="typesList">
@@ -44,7 +44,7 @@
                     while ($row1 = $result1->fetch_assoc()) {
                         $id = $row1["id"];
                         $type = $row1["type"];
-                        echo "<option value=$id>" . $type . "</option>";
+                        echo "<option value=$id required>" . $type . "</option>";
                     }
                     ?>
                 </select>
@@ -56,25 +56,35 @@
                     while ($row2 = $result2->fetch_assoc()) {
                         $id2 = $row2["id"];
                         $voivodeship = $row2["voivodeship"];
-                        echo "<option value=$id2>" . $voivodeship . "</option>";
+                        echo "<option value=$id2 required> " . $voivodeship . "</option>";
                     }
                     ?>
                 </select>
             </div>
             <div class="first-column">Miejscowość</div>
-            <div class="second-column"><input type="text" name="city" placeholder="Podaj miasto"></div>
+            <div class="second-column"><input type="text" name="city" placeholder="Podaj miasto" required></div>
             <div class="first-column">Ulica</div>
-            <div class="second-column"><input type="text" name="street" placeholder="Podaj ulicę"></div>
+            <div class="second-column"><input type="text" name="street" placeholder="Podaj ulicę" required></div>
             <div class="first-column">Numer</div>
-            <div class="second-column"><input type="text" name="number" placeholder="Podaj numer"></div>
+            <div class="second-column"><input type="text" name="number" placeholder="Podaj numer" required></div>
             <div class="first-column">Kod pocztowy</div>
-            <div class="second-column"><input type="text" name="postcode" placeholder="Podaj kod pocztowy"></div>
+            <div class="second-column"><input type="text" name="postcode" placeholder="Podaj kod pocztowy" required></div>
             <div class="first-column">Nazwa lokacji</div>
-            <div class="second-column"><input type="text" name="name" placeholder="Jak nazwiesz tę lokację?"></div>
+            <div class="second-column"><input type="text" name="name" placeholder="Jak nazwiesz tę lokację?" required></div>
             <div class="first-column">Współrzędne</div>
-            <div class="second-column"><input type="text" name="position" placeholder="Podaj współrzędne"></div>
+            <div class="second-column"><input type="text" name="position1" placeholder="° szerokości geograficznej" required></div>
+            <div class="first-column"></div>
+            <div class="second-column"><input type="text" name="position2" placeholder="' szerokości geograficznej" required></div>
+            <div class="first-column"></div>
+            <div class="second-column"><input type="text" name="position3" placeholder="'' szerokości geograficznej" required></div>
+            <div class="first-column"></div>
+            <div class="second-column"><input type="text" name="position4" placeholder="° długości geograficznej" required></div>
+            <div class="first-column"></div>
+            <div class="second-column"><input type="text" name="position5" placeholder="' długości geograficznej" required></div>
+            <div class="first-column"></div>
+            <div class="second-column"><input type="text" name="position6" placeholder="'' długości geograficznej" required></div>
             <div class="first-column">Opis</div>
-            <div class="second-column"><textarea name="description" rows="10" cols="50" style="width:80%"></textarea></div>
+            <div class="second-column"><textarea name="description" rows="10" cols="50" style="width:80%" required></textarea></div>
         </div>
 
         <br>

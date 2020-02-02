@@ -2,6 +2,7 @@
     include_once('../database/database.php');
     include_once('../layout.php');
     session_start();
+    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     if(isset($_SESSION['login'])) {
         $login = $_SESSION['login'];
         $sql = "select name, surname, email from users where login='$login'";
@@ -29,7 +30,7 @@
     <?php
         if(isset($_SESSION['login'])) $sesLog = $_SESSION['login'];
         else $sesLog = "";
-        echo showHeader($sesLog, '../index.php', '../profile/index.php', '../login/logout.php', '../login/register.php', '../login/login.php', '../img/avatars/default.png');
+        echo showHeader($sesLog, '../index.php', '../profile/index.php', '../login/logout.php', '../login/register.php', '../login/login.php', '../img/avatars/'.$img.'.png');
     ?>
         <br><br><br>
         <form action="send/index.php" method="POST">
@@ -44,10 +45,12 @@
             </label>
             <label><b>Wiadomość:</b><textarea name="content" cols="100" rows="10" maxlength="960" placeholder="Wpisz swoją wiadomość" required></textarea></label>
             <button id="submitMessage"  type="submit">Wyślij!</button>
+
         </form>
     <br><br><br><br>
-
-
+    <div class="return-container">
+        <div class="return" onclick="document.location='../index.php'">Wróć na stronę główną</div>
+    </div>
     <?php echo $footer;?>
 </body>
 </html>

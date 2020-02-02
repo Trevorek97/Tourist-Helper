@@ -15,7 +15,8 @@
     function showHeader($session, $main, $profile, $logout, $register, $login, $image) {
         echo "<header>
             <div id=\"title\"><a style=\"text-decoration:none\" href=". $main .">Tourist Helper</a></div><div id=\"topMenu\">";
-            if($session!='') {
+
+        if($session!='') {
                 echo " <a href='". $profile ."'><img class='avatar' src='" . $image . "' alt=''></a>";
                 echo "<span class='username'> " . $session . "</span>";
                 echo "<button id='logButton' onclick=\"document . location = '" . $logout ."'\">Wyloguj</button>";
@@ -63,9 +64,20 @@
         $pageTitle[32] = "Usunięty administrator $var! - Panel administracyjny";
         $pageTitle[33] = "Pytania użytkowników - Panel administracyjny";
         $pageTitle[34] = "Zarządzaj zdjęciami - Panel administracyjny";
+        $pageTitle[35] = "$var - Profil użytkownika";
+        $pageTitle[36] = "Zmiana danych użytkownika $var";
+        $pageTitle[37] = "Zmiana zdjęcia profilowego";
+        $pageTitle[38] = "Ulubione miejsca";
+        $pageTitle[39] = "Usuń konto";
         return "<title>" . $pageTitle[$id] . $pageTitle[0] . "</title>";
     }
 
+    function profilePhoto($user, $connection) {
+        $sql = "select image from users where login='$user'";
+        $result=$connection->query($sql);
+        $row = $result->fetch_assoc();
+        return $row["image"];
+    }
 
     $tooltip = "Możesz użyć tagów HTML do edycji treści artykułu, np: <br>
     * &lt;br&gt; przeniesie tekst do nowej linii <br>

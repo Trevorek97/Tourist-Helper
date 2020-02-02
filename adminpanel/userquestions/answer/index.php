@@ -1,11 +1,11 @@
 <?php
-include_once ('../../../database/database.php');
-include_once ('../../../layout.php');
-session_start();
-include("auth.php");
-
-$reason = $_GET["reason"];
-$id = $_GET["id"];
+    include_once ('../../../database/database.php');
+    include_once ('../../../layout.php');
+    session_start();
+    include("auth.php");
+    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
+    $reason = $_GET["reason"];
+    $id = $_GET["id"];
 ?>
 
 
@@ -24,7 +24,7 @@ $id = $_GET["id"];
 <?php
 if(isset($_SESSION['login'])) $sesLog = $_SESSION['login'];
 else $sesLog = "";
-echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '../../../login/logout.php', '../../../login/register.php', '../../../login/login.php', '../../../img/avatars/default.png');
+echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '../../../login/logout.php', '../../../login/register.php', '../../../login/login.php', '../../../img/avatars/'.$img.'.png');
 ?>
 <br><br><br>
     <div class="admcontainer">

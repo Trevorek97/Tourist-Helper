@@ -1,15 +1,15 @@
 <?php
-include_once ('../../database/database.php');
-include_once ('../../layout.php');
-session_start();
-include("auth.php");
-
+    include_once ('../../database/database.php');
+    include_once ('../../layout.php');
+    session_start();
+    include("auth.php");
+    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     if(isset($_GET['answerid']) && isset($_POST['answercontent'])) {
     $answercontent =  $_POST['answercontent'];
     $answerid = $_GET['answerid'];
     $sql3 = "update user_message set answer = '$answercontent' where id = '$answerid'";
     $result3 = $connection->query($sql3);
-}
+    }
     $sql = "select id, name, surname, mail, content, answer, topic, public from user_message";
     $result = $connection->query($sql)  or die($connection->error);;
     $sql2 = "select id, topic from message_topic";
@@ -39,7 +39,7 @@ include("auth.php");
 <?php
 if(isset($_SESSION['login'])) $sesLog = $_SESSION['login'];
 else $sesLog = "";
-echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../login/logout.php', '../../login/register.php', '../../login/login.php', '../../img/avatars/default.png');
+echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../login/logout.php', '../../login/register.php', '../../login/login.php', '../../img/avatars/'.$img.'.png');
 ?>
 <br><br><br>
 

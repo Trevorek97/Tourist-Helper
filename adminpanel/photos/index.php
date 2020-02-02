@@ -1,9 +1,9 @@
 <?php
-include_once ('../../database/database.php');
-include_once ('../../layout.php');
-session_start();
-include("auth.php");
-
+    include_once ('../../database/database.php');
+    include_once ('../../layout.php');
+    session_start();
+    include("auth.php");
+    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     $sql = "select photo.id as 'id', photo.photo as 'photo', location.name as 'location', photo.visibility as 'visibility' from photo, location where
             photo.location = location.id";
     $result = $connection->query($sql)  or die($connection->error);;
@@ -25,7 +25,7 @@ include("auth.php");
 <?php
 if(isset($_SESSION['login'])) $sesLog = $_SESSION['login'];
 else $sesLog = "";
-echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../login/logout.php', '../../login/register.php', '../../login/login.php', '../../img/avatars/default.png');
+echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../login/logout.php', '../../login/register.php', '../../login/login.php', '../../img/avatars/'.$img.'.png');
 ?>
 <br><br><br>
 

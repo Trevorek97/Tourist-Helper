@@ -2,7 +2,7 @@
     include_once ('../database/database.php');
     include_once ('../layout.php');
     session_start();
-
+    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     $sql = "select content, answer from user_message where public = '1' order by id desc";
     $result = $connection->query($sql);
 ?>
@@ -23,7 +23,7 @@
 <?php
 if(isset($_SESSION['login'])) $sesLog = $_SESSION['login'];
 else $sesLog = "";
-echo showHeader($sesLog, '../index.php', '../profile/index.php', '../login/logout.php', '../login/register.php', '../login/login.php', '../img/avatars/default.png');
+echo showHeader($sesLog, '../index.php', '../profile/index.php', '../login/logout.php', '../login/register.php', '../login/login.php', '../img/avatars/'.$img.'.png');
 ?>
 <br><br><br>
         <?php while ($row = $result->fetch_assoc()) {
@@ -33,6 +33,9 @@ echo showHeader($sesLog, '../index.php', '../profile/index.php', '../login/logou
             echo "</div>";
             echo "<div class='space'></div>";
         } ?>
+<div class="return-container">
+    <div class="return" onclick="document.location='../index.php'">Wróć na stronę główną</div>
+</div>
 <?php echo $footer;?>
 </body>
 </html>

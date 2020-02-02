@@ -4,7 +4,7 @@
     include_once('delete.php');
     session_start();
     include("auth.php");
-
+    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     $id = $_GET["deleted"];
     $title = $_GET["title"];
     $message = deleteArticle($connection, $id);
@@ -23,7 +23,7 @@
     <?php
         if(isset($_SESSION['login'])) $sesLog = $_SESSION['login'];
         else $sesLog = "";
-        echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '../../../login/logout.php', '../../../login/register.php', '../../../login/login.php', '../../../img/avatars/default.png');
+        echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '../../../login/logout.php', '../../../login/register.php', '../../../login/login.php', '../../../img/avatars/'.$img.'.png');
     ?>
     <br><br><br>
 

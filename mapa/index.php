@@ -89,7 +89,7 @@
         for(let i=0;i<l.length;i++) {
             l[i].onclick = function() {
               if(confirm(name[i] + "\nKliknij 'OK' by otworzyć szczegóły lokacji!")) {
-                  window.location="../przewodnik/search/location/index.php?id=" + id[i];
+                  window.location="../guide/search/location/index.php?id=" + id[i];
               }
               l[i].onmouseover = function() {
                   this.style.cursor="pointer";

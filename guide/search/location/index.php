@@ -47,6 +47,10 @@
 
     $sql7 = "select * from users, users_favourite where users_favourite.location='$id' and users.id=users_favourite.user and users.login='$log'";
     $result7=$connection->query($sql7);
+
+    $sql8 = "select event.id as 'idevent', event.name as 'name', event.startdate as 'startdate', event.enddate as 'enddate' from event, location
+             where location.id=event.location and event.location='$id' and event.enddate > current_date";
+    $result8 = $connection->query($sql8);
     ?>
 
 <!DOCTYPE html>
@@ -57,7 +61,7 @@
     <script type="text/javascript" src="../../../tourist.js"></script>
     <link rel="icon" href="../../../img/zaplanuj.jpg" type="image/x-icon"> <!-- miniaturka na pasku-->
     <link rel="stylesheet" type="text/css" href="../../../style.css">
-    <link rel="stylesheet" type="text/css" href="../../style_przewodnik.css">
+    <link rel="stylesheet" type="text/css" href="../../style_guide.css">
 </head>
 <body>
 <?php
@@ -113,14 +117,34 @@
             <?php echo $location["description"];?>
         </div>
 
+            <?php
+            echo "<div class='guide-comment-container'>";
+                if($result8->num_rows > 0 && isset($_SESSION["login"])) {
+                    echo "<div class='guide-comment-title'>Nadchodzące wydarzenia:</div>";
+                    while ($row8 = $result8->fetch_assoc()) {
+                        $startdate = date_create($row8["startdate"]);
+                        $enddate = date_create($row8["enddate"]);
+                        $eventid=$row8["idevent"];
+                        echo "<div class='event' onclick='window.location=\"../../../events/searchevent/event/index.php?id=$eventid\"'>";
+                        echo $row8["name"] . " | Zaczyna się: " . date_format($startdate, 'd-m-Y') . " | Kończy się: " . date_format($enddate, 'd-m-Y');
+                        echo "</div>";
+                    }
+                } else if ($result8->num_rows == 0 && isset($_SESSION["login"])){
+                    echo "<div class='guide-comment-title'>Brak nadchodzących wydarzeń w tej lokacji!</div>";
+                } else {
+                    echo "<div class='guide-comment-title'>Zaloguj się, by zobaczyć nadchodzące wydarzenia w tej lokacji!</div>";
+                }
+            echo "</div>"; ?>
+
+
         <?php if(isset($_SESSION["login"])) {
-            if(mysqli_num_rows($result7)=='0') {
+            if(mysqli_num_rows($result7)==0) {
                 echo "<div class='guide-favourite' onclick='window.location=\"action/index.php?action=6&location=$id&user=$log\"'>Dodaj do ulubionych!</div>";
                 } else {
                 echo "<div class='guide-favourite' onclick='window.location=\"action/index.php?action=7&location=$id&user=$log\"'>Usuń z ulubionych!</div>";
+                }
             }
-
-             } ?>
+            ?>
         <div class='guide-map' onclick='window.location="../../../mapa/index.php?location=<?php echo $id;?>"'>Zobacz na mapie!</div>
 
         <div class="guide-comment-container">

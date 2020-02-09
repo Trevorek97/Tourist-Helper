@@ -37,10 +37,12 @@
             <div class="imgtext">Aktualności</div>
         </div>
 
-        <div class="imgcontainer">
-            <img class="imgmenu" src="img/wydarzenia.jpg" alt="Wydarzenia">
-            <div class="imgtext">Nadchodzące wydarzenia</div>
-        </div>
+        <?php if(isset($_SESSION['login'])) {
+            echo "<div class='imgcontainer'>";
+                echo "<img class='imgmenu' src='img/wydarzenia.jpg' alt='Wydarzenia'>";
+                echo "<div class='imgtext'>Nadchodzące wydarzenia</div>";
+            echo "</div>"; }
+        ?>
 
         <div class="imgcontainer">
             <img class="imgmenu" src="img/przewodnik.jpg" alt="Przewodnik">

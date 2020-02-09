@@ -14,9 +14,9 @@ function mouseOnMenu($status)
 {
     var img=document.querySelectorAll(".imgmenu");
     if($status == '0') {
-        var pages = ["aktualnosci", "wydarzenia", "przewodnik", "mapa", "o-nas", "kontakt", "faq"];
+        var pages = ["aktualnosci", "events", "guide", "mapa", "o-nas", "kontakt", "faq"];
     } else {
-        var pages = ["aktualnosci", "wydarzenia", "przewodnik", "zaplanuj", "mapa", "o-nas", "kontakt", "faq", "adminpanel"];
+        var pages = ["aktualnosci", "events", "guide", "zaplanuj", "mapa", "o-nas", "kontakt", "faq", "adminpanel"];
     }
 
     for(let i=0;i<pages.length;i++)

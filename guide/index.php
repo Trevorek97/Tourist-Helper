@@ -18,7 +18,7 @@
     <script type="text/javascript" src="../tourist.js"></script>
     <link rel="icon" href="../img/zaplanuj.jpg" type="image/x-icon"> <!-- miniaturka na pasku-->
     <link rel="stylesheet" type="text/css" href="../style.css">
-    <link rel="stylesheet" type="text/css" href="style_przewodnik.css">
+    <link rel="stylesheet" type="text/css" href="style_guide.css">
 </head>
 <body>
 <?php

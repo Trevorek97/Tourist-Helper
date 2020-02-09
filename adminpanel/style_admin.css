@@ -286,3 +286,12 @@ textarea {
  margin: 0 auto !important;
 }
 .photo-flex > img { object-fit:cover !important; max-width:300px !important; max-height:100px !important}
+
+.info {
+    text-align:center;
+    font-size:16px;
+    color:red !important;
+    font-weight:bold;
+    font-family:Ubuntu;
+    display:none;
+}

@@ -69,6 +69,12 @@
         $pageTitle[37] = "Zmiana zdjęcia profilowego";
         $pageTitle[38] = "Ulubione miejsca";
         $pageTitle[39] = "Usuń konto";
+        $pageTitle[40] = "Wydarzenia";
+        $pageTitle[41] = "Wyszukiwanie wydarzeń";
+        $pageTitle[42] = "$var - Wydarzenia";
+        $pageTitle[43] = "Usuń wydarzenie - Panel administracyjny";
+        $pageTitle[44] = "Dodaj wydarzenie - Panel administracyjny";
+        $pageTitle[45] = "Ulubione wydarzenia";
         return "<title>" . $pageTitle[$id] . $pageTitle[0] . "</title>";
     }
 

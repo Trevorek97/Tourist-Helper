@@ -55,6 +55,14 @@
                     </td>
                 </tr>
                 <tr>
+                    <td onclick="document.location='addevent/index.php'">
+                        Dodaj wydarzenie
+                    </td>
+                    <td onclick="document.location='deleteevent/index.php'">
+                        Usuń wydarzenie
+                    </td>
+                </tr>
+                <tr>
                     <td onclick="document.location='photos/index.php'">
                         Zarządzaj zdjęciami
                     </td>

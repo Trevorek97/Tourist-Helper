@@ -28,7 +28,8 @@
         <img class="profile-photo" src="../img/avatars/<?php echo $img;?>.png">
         <div class="profile-button" onclick="window.location='changedata/index.php?&user=<?php echo $sesLog;?>'">Zmień swoje dane</div>
         <div class="profile-button" onclick="window.location='changephoto/index.php?&user=<?php echo $sesLog;?>'">Zmień zdjęcie profilowe</div>
-        <div class="profile-button" onclick="window.location='favourites/index.php?&user=<?php echo $sesLog;?>'">Przeglądaj ulubione lokacje</div>
+        <div class="profile-button" onclick="window.location='favourites_location/index.php?&user=<?php echo $sesLog;?>'">Ulubione lokacje</div>
+        <div class="profile-button" onclick="window.location='favourites_events/index.php?&user=<?php echo $sesLog;?>'">Zapisane wydarzenia</div>
         <div class="profile-button" onclick="window.location='deleteaccount/index.php?&user=<?php echo $sesLog;?>'">Usuń konto</div>
     </div>
 

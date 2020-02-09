@@ -115,3 +115,46 @@
     font-weight:600;
     color: #DAAF21;
 }
+
+.profile-container-2 {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    background-image: linear-gradient(to bottom, #585459, #363237);
+    margin: 0 auto;
+    width:80%;
+    border-radius:50px;
+    padding: 20px 60px 20px 60px;
+}
+
+.flex-row {
+    flex: 0 0 20%;
+    color: #DAAF21;
+    font-weight: 600;
+}
+
+.button-delete {
+    flex: 0 0 20%;
+    color: whitesmoke;
+    background-color: #ab3a3a;
+    border-radius:20px;
+    width:40%;
+    height:auto;
+    text-align:center;
+    padding:5px 0 5px 0;
+}
+
+.button-delete:hover {
+    background-color: #891818;
+    cursor:pointer;
+}
+
+#pc2:hover {
+    cursor:pointer;
+    color: whitesmoke;
+}
+
+#pc3:hover {
+    cursor:pointer;
+    color:whitesmoke;
+}

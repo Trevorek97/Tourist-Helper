@@ -85,7 +85,7 @@
         return $row["image"];
     }
 
-    $tooltip = "Możesz użyć tagów HTML do edycji treści artykułu, np: <br>
+    $tooltip = "Możesz użyć tagów HTML do edycji treści, np: <br>
     * &lt;br&gt; przeniesie tekst do nowej linii <br>
     * &lt;i&gt; &lt;/i&gt; pochyli tekst <br>
     * &lt;strong&gt; &lt;/strong&gt; pogrubi tekst <br>

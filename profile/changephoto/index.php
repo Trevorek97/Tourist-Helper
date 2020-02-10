@@ -46,7 +46,9 @@
         for(let i=0;i<count;i++) {
             photos[i]=document.createElement("img");
             photos[i].src="../../img/avatars/" + (i+1) + ".png";
+
         }
+
         p.innerHTML = "<img class='photo' src=" + photos[img-1].src +">";
         let i = img-1;
         document.getElementById('right').onclick=function() {

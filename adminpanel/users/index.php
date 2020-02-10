@@ -4,7 +4,7 @@
     session_start();
     include("auth.php");
     if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
-    $sql = "select id, login, email, name, surname, registerdate, admin from users";
+    $sql = "select id, login, email, name, surname, registerdate, admin from users where login != 'Konto usunięte' and login != 'KONTO USUNIĘTE'";
     $result = $connection->query($sql) or die($connection->error);?>
 
 <!DOCTYPE html>

@@ -3,7 +3,11 @@
 function useraction($connection, $id, $login, $reason) {
 
     if($reason == '1') {
-        $sql = "delete from users where id = '$id'";
+        $sqlfavloc = "delete from users_favourite where id = '$id'";
+        $resultfavloc = $connection->query($sqlfavloc);
+        $sqlfavevent = "delete from event_favourite where id = '$id'";
+        $resultfavevent = $connection->query($sqlfavevent);
+        $sql = "update users set name='', surname='', email='', login='Konto usunięte', password='', admin='0' where id = '$id'";
         $result = $connection->query($sql);
         $message = "Usunięto użytkownika $login!";
     } elseif ($reason == '2') {

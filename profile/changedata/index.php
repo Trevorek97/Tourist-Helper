@@ -77,7 +77,6 @@
                 </div>
                 <div id="pwd-info"></div>
                 <input class="submit" type="submit" name="submit" value="Zmień dane" />
-                <div class="login-title" style="color:#0067ab; font-size:16px">Zmiana loginu będzie widoczna po ponownym zalogowaniu</div>
             </form>
         </div>
     <?php } ?>

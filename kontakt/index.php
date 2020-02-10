@@ -35,9 +35,9 @@
         <br><br><br>
         <form action="send/index.php" method="POST">
             <h2>Napisz do nas!</h2>
-            <label><b>Imię:</b><input name="name" type="text" placeholder="Podaj imię" <?php if(isset($_SESSION['login'])) echo "value='$name'";?> required <?php if(isset($_SESSION["login"])) { echo "disabled";}?>></label><br>
-            <label><b>Nazwisko:</b><input name="surname" type="text" placeholder="Podaj nazwisko" <?php if(isset($_SESSION['login'])) echo "value='$surname'";?> required <?php if(isset($_SESSION["login"])) { echo "disabled";}?>></label><br>
-            <label><b>E-mail:</b><input name="mail" type="email" placeholder="Podaj e-mail" <?php if(isset($_SESSION['login'])) echo "value='$email'";?> required <?php if(isset($_SESSION["login"])) { echo "disabled";}?>></label><br>
+            <label><b>Imię:</b><input name="name" type="text" placeholder="Podaj imię" <?php if(isset($_SESSION['login'])) echo "value='$name'";?> required></label><br>
+            <label><b>Nazwisko:</b><input name="surname" type="text" placeholder="Podaj nazwisko" <?php if(isset($_SESSION['login'])) echo "value='$surname'";?> required></label><br>
+            <label><b>E-mail:</b><input name="mail" type="email" placeholder="Podaj e-mail" <?php if(isset($_SESSION['login'])) echo "value='$email'";?> required></label><br>
             <label><b>Temat wiadomości:</b><br>
                 <label class="radiolabel">Opinia o aplikacji<input type="radio" name="topic"  value="1" checked></label><br>
                 <label class="radiolabel">Zgłoś problem<input type="radio" name="topic" value="2"></label><br>

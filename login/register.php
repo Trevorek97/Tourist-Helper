@@ -25,6 +25,8 @@ include_once ('../layout.php');
 <?php
 // If form submitted, insert values into the database.
 if (isset($_REQUEST['login'])){
+
+
     $name = stripslashes($_REQUEST['name']);
     $name = mysqli_real_escape_string($connection,$name);
     $name = ucfirst($name);
@@ -44,13 +46,22 @@ if (isset($_REQUEST['login'])){
 
     $registerDate = date("Y-m-d H:i:s");
 
-    $query = "INSERT into users (name, surname, login, password, email, registerdate)
-VALUES ('$name' ,'$surname', '$login', '".md5($password)."', '$email', '$registerDate')";
-    $result = mysqli_query($connection,$query);
-    if($result){
-        echo "<div class='login-container'>
+    $sqlcheck = "select id from users where login='$login' or email = '$email'";
+    $resultcheck = $connection->query($sqlcheck);
+    if($resultcheck->num_rows >0) {
+        echo "<div style='text-align:center; font-size:20px; font-weight:600; color:red'>Login lub email zajęte!</div>";
+        echo "<div class='submit' onclick='window.location=\"register.php\"'>Powrót</div>";
+    }
+    else {
+        $query = "INSERT into users (name, surname, login, password, email, registerdate)
+VALUES ('$name' ,'$surname', '$login', '" . md5($password) . "', '$email', '$registerDate')";
+        $result = mysqli_query($connection, $query);
+
+        if ($result) {
+            echo "<div class='login-container'>
            <div class='login-title' style='font-size:18px'>Gratulacje $name, od teraz jesteś zarejestrowany!</div>
             <a href='login.php'><div class='submit'>Zaloguj się!</div></a></div>";
+        }
     }
 }else{
     ?>

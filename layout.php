@@ -19,7 +19,7 @@
         if($session!='') {
                 echo " <a href='". $profile ."'><img class='avatar' src='" . $image . "' alt=''></a>";
                 echo "<span class='username'> " . $session . "</span>";
-                echo "<button id='logButton' onclick=\"document . location = '" . $logout ."'\">Wyloguj</button>";
+                echo "<button id='logButton' onclick=\"document . location = '" . $logout ."?login=$session'\">Wyloguj</button>";
             } else {
                 echo "<button id='logButton' style='right:160px' onclick=\"document . location = '". $register ."'\">Zarejestruj</button>";
                 echo "<button id='logButton' onclick=\"document . location = '". $login ."'\">Zaloguj</button>";
@@ -75,6 +75,7 @@
         $pageTitle[43] = "Usuń wydarzenie - Panel administracyjny";
         $pageTitle[44] = "Dodaj wydarzenie - Panel administracyjny";
         $pageTitle[45] = "Ulubione wydarzenia";
+        $pageTitle[46] = "Logi";
         return "<title>" . $pageTitle[$id] . $pageTitle[0] . "</title>";
     }
 

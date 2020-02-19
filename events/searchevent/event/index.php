@@ -34,6 +34,11 @@ $sql3 = "select name from location where id='$locationid'";
 $result3 =$connection->query($sql3);
 $row3 = $result3->fetch_assoc();
 $locationname=$row3["name"];
+
+$sqlfav = "select count(*) as favourites from event_favourite where event='$id'";
+$resultfav = $connection->query($sqlfav);
+$rowfav = $resultfav->fetch_assoc();
+$favourites = $rowfav["favourites"];
 ?>
 
 
@@ -60,6 +65,7 @@ echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '..
         <?php echo "<div class='event-date'>Zaczyna się: " . date_format($startdate,'d-m-Y')  . "</div>";?>
         <?php echo "<div class='event-date'>Kończy się: " . date_format($enddate, 'd-m-Y') . "</div>";?>
         <?php echo "<div class='event-location' onclick='window.location=\"../../../guide/search/location/index.php?id=$locationid\"'>Miejsce: " . $locationname . "</div>";?>
+        <?php echo "<div class='event-date'>Użytkownicy zainteresowani wydarzeniem: " . $favourites . "</div>";?>
         <div class="event-description"><?php echo $row["description"];?></div>
         <br>
         <?php

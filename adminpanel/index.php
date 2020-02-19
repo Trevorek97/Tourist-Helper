@@ -66,6 +66,9 @@
                     <td onclick="document.location='photos/index.php'">
                         Zarządzaj zdjęciami
                     </td>
+                    <td onclick="document.location='logs/index.php'">
+                        Zobacz logi
+                    </td>
                 </tr>
             </table>
 

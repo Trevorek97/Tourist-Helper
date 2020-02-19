@@ -269,3 +269,10 @@
     background-color: #bb9300;
     cursor:pointer;
 }
+
+@media only screen and (max-width: 600px) {
+    .wrapper { display:block; width:90%; margin: 10px auto;}
+    .search-container { display:block; margin:10px auto}
+    .column-flex-title-a, .column-flex-title-b, .column-flex-data-a, .column-flex-data-b { flex:0  0 24%}
+
+}

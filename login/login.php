@@ -31,14 +31,23 @@ if (isset($_POST['login'])){
     $password = stripslashes($_REQUEST['password']);
     $password = mysqli_real_escape_string($connection,$password);
 
-    $query = "SELECT * FROM users WHERE login='$login'
+    $query = "SELECT id FROM users WHERE login='$login'
 and password='".md5($password)."'";
 
     $result = mysqli_query($connection,$query) or die(mysql_error());
     $rows = mysqli_num_rows($result);
 
+
+
+
     if($rows==1){
         $_SESSION['login'] = $login;
+        $rowquery = $result->fetch_assoc();
+        $userid = $rowquery["id"];
+        $userip = $_SERVER["REMOTE_ADDR"];
+        $userbrowser = $_SERVER["HTTP_USER_AGENT"];
+        $sessionquery = "insert into active_session(user, ip, browser) values ('$userid', '$userip', '$userbrowser')";
+        $connection->query($sessionquery) or die ($connection->error);
         header("Location: ../index.php");
     }else{
         echo "<div class='login-container'>
@@ -59,7 +68,7 @@ and password='".md5($password)."'";
             <input class="submit" type="submit" name="submit" value="Zaloguj!" </input>
 
         </form>
-        <div class="login-title" style="font-size:18px">Nie masz jeszcze konta? <a href='register.php' style='font-weight:600'>Zarejestruj się</a>.</div>
+        <div class="login-title"  id="login-title" style="font-size:18px">Nie masz jeszcze konta? <a href='register.php' style='font-weight:600'>Zarejestruj się</a>.</div>
     </div>
 <?php } ?>
 

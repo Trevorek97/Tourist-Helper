@@ -2,9 +2,9 @@
     include_once('../../../database/database.php');
     include_once('../../../layout.php');
     include_once("delete.php");
-    if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     session_start();
     include("auth.php");
+if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
 
     $id = $_GET["deleted"];
     $name = $_GET["name"];
@@ -28,10 +28,6 @@
         echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '../../../login/logout.php', '../../../login/register.php', '../../../login/login.php', '../../../img/avatars/'.$img.'.png');
     ?>
     <br><br><br>
-
-    <?php
-    echo $id;
-    ?>
 
     <div class=admcontainer>
         <h2 class='confirm-add'><?php echo $message; ?></h2>

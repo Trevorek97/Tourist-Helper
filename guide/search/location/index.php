@@ -99,6 +99,7 @@
                 <span class="details-info"><?php echo $location["postcode"] ?></span>
             </div>
         </div>
+
         <div class="photos-container">
             <?php
             $i=0;
@@ -109,14 +110,17 @@
             ?>
         </div>
 
+
+        <span class="photobutton" id="photobutton">Pokaż kolejne zdjęcie</span>
+
         <div class="photo-big-container">
             <span id="photo-big" class="photo-big"></span>
         </div>
 
+
         <div class="guide-description">
             <?php echo $location["description"];?>
         </div>
-
             <?php
             echo "<div class='guide-comment-container'>";
                 if($result8->num_rows > 0 && isset($_SESSION["login"])) {
@@ -236,30 +240,7 @@
         </div>
     </div>
 <br><br><br><br><br>
-    <script>
-        let photosJS = <?php echo json_encode($photos); ?>;
-        document.getElementById("photo-big").innerHTML=photosJS[0];
-        let photos = document.querySelectorAll(".photo-small");
-        for(let i=0;i<=photos.length;i++) {
-            photos[i].style.filter = "grayscale(1)";
-            photos[i].style.backgroundColor = "#292929";
-            photos[i].onclick = function () {
-                let s = document.getElementById("photo-big");
-                s.innerHTML = photosJS[i];
-                this.style.filter = "grayscale(0)";
-                photos[i].style.backgroundColor = "#c9a904";
-                scroll(0, 60)
-            };
-            photos[i].onmouseout = function () {
-                this.style.filter = "grayscale(1)";
-                photos[i].style.backgroundColor = "#292929";
-            };
-            photos[i].onmouseover = function () {
-                this.style.filter = "grayscale(0)";
-                photos[i].style.backgroundColor = "#c9a904";
-            };
-        }
-        </script>
+
         <script>
             let reply = document.querySelectorAll(".comment-reply");
             let subcomment = document.querySelectorAll(".comment-reply-input");
@@ -307,8 +288,23 @@
           }
         };
     }
-</script>
 
+
+</script>
+<script>
+
+    let photosJS = <?php echo json_encode($photos); ?>;
+    let photos = document.querySelectorAll(".photo-small");
+    let len = photos.length;
+    let tmp=1;
+    document.getElementById('photo-big').innerHTML=photosJS[0];
+    document.getElementById('photobutton').onclick=function() {
+        if(tmp==len) tmp=0;
+        document.getElementById('photo-big').innerHTML=photosJS[tmp];
+        tmp=tmp+1;
+        if(tmp==len) tmp=0;
+    };
+</script>
     <?php echo $footer;?>
 </body>
 </html>

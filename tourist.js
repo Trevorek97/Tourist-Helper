@@ -1,6 +1,6 @@
-function showParallelogramText(name="")
+function showParallelogramText()
 {
-    var welcomeText = "Witaj " + name + " w <b> Tourist Helper </b> - webowej aplikacji"
+    var welcomeText = "Witaj w <b> Tourist Helper </b> - aplikacji"
         + " mającej ułatwić podróżowanie! Nie masz pomysłu dokąd wybrać"
         + " się na urlop czy na wakacje? Planujesz weekendowy wypad poza miasto?"
         + " Sprawdź możliwości naszej aplikacji, z nami zaplanujesz swoje najlepsze"
@@ -10,13 +10,15 @@ function showParallelogramText(name="")
 }
 
 
-function mouseOnMenu($status)
+function mouseOnMenu(status)
 {
     var img=document.querySelectorAll(".imgmenu");
-    if($status == '0') {
-        var pages = ["aktualnosci", "events", "guide", "mapa", "o-nas", "kontakt", "faq"];
-    } else {
+    if(status == '2') {
+        var pages = ["aktualnosci", "events", "guide", "zaplanuj", "mapa", "o-nas", "kontakt", "faq"];
+    } else if (status=='1') {
         var pages = ["aktualnosci", "events", "guide", "zaplanuj", "mapa", "o-nas", "kontakt", "faq", "adminpanel"];
+    } else if (status =='0') {
+        var pages = ["aktualnosci", "guide", "mapa", "o-nas", "kontakt", "faq"];
     }
 
     for(let i=0;i<pages.length;i++)

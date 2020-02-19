@@ -77,7 +77,7 @@ footer {
     text-shadow: 1px 0 1px black;
     color: lightyellow;
     width: 60%;
-    height: auto;
+    height: 100px;
     transform: skewX( -20deg ); /* "Pochylenie" - tworzy kształt trapezu*/
     background-color: #585459;
     border-radius:20px;
@@ -88,8 +88,13 @@ footer {
 
 @keyframes ShowParallelogram {
     0% { width: 1%;}
+    0% { font-size: 0px;}
+    0% { height:100px}
+    50% { font-size: 0px;}
+    50% { height: 100px}
     100% { width:60%; }
     100% {font-size: 1.5vw;}
+    100% { height:100px}
 }
 
 
@@ -224,5 +229,39 @@ footer {
     margin-left:50px;
     margin-right:auto;
     border:1px solid black;
-
  }
+
+
+@media only screen and (max-width: 600px) {
+
+    .imgcontainer {
+        width:85%;
+        margin: 0 auto;
+    }
+    .imgmenu {
+        width:100%;
+        margin: 0 auto;
+    }
+    .return-container {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .return {
+        width: 60%;
+    }
+
+    #parallelogram {
+        -o-transform: none !important;
+        -moz-transform: none !important;
+        -ms-transform: none !important;
+        -webkit-transform: none !important;
+        transform: none !important;
+        height:auto;
+        font-size:17px;
+    }
+
+    .imgtext {
+        font-size:15px;
+    }
+}

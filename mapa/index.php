@@ -51,7 +51,7 @@
     </div>
     <script src="OpenLayers.js"></script>
     <script>
-        let zoom = 18;
+        let zoom = 13;
         let fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
         let toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
         let markers = new OpenLayers.Layer.Markers( "Markers" );
@@ -82,6 +82,7 @@
         map.setCenter(position[start], zoom);
 
         console.log('My object: ', markers);
+
     </script>
 
     <script>
@@ -96,6 +97,7 @@
               }
             };
         }
+
         document.getElementById("OpenLayers_Control_Attribution_21").style.display="none";
     </script>
 

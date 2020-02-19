@@ -295,3 +295,13 @@ textarea {
     font-family:Ubuntu;
     display:none;
 }
+
+@media only screen and (max-width: 600px) {
+    .admcontainer { width:85%}
+    form { width:85%}
+    .flex-container { display:block}
+    .first-column { display:block; text-align:center}
+    .second-column { display:block}
+    .flex-container-2 {display:block}
+    
+}

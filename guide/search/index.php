@@ -31,7 +31,7 @@
     ?>
     <br><br><br>
         <div class="search-container" id="search-container-th">
-            <div class='search-b'>Zdjęcie</div>
+            <div class='search-b' id="col1">Zdjęcie</div>
             <div class='search-b'>Rodzaj</div>
             <div class='search-b'>Nazwa</div>
             <div class='search-b'>Miasto</div>
@@ -46,7 +46,7 @@
                 $result = $connection->query($sql);
                 $row = $result->fetch_assoc();
                 echo "<a href='location?id=$searchResults[$i]'><div class='search-container'> ";
-                    echo "<div class='search-photo'>" . $row["photo"] . "</div>";
+                    echo "<div class='search-photo' id='col2'>" . $row["photo"] . "</div>";
                     echo "<div class='search-b'>" . $row["type"] . "</div>";
                     echo "<div class='search-b'>" . $row["name"] . "</div>";
                     echo "<div class='search-b'>" . $row["city"] . "</div>";

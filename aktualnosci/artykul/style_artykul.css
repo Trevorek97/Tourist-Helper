@@ -221,5 +221,12 @@ a:hover {
     margin: 0 auto;
     margin-bottom:10px;
     position:relative;
+}
 
+@media only screen and (max-width: 600px) {
+
+    .guide-pubdate {
+        float:left;
+        position:absolute;
+    }
 }

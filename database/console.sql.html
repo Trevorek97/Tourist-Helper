@@ -1,0 +1,546 @@
+<html>
+<head>
+<title>console.sql</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+.s4 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+console.sql</font>
+</center></td></tr></table>
+<pre><span class="s0">create database </span><span class="s1">touristhelper</span><span class="s0">;</span>
+use <span class="s1">touristhelper</span><span class="s0">;</span>
+alter database <span class="s1">touristhelper </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+create table <span class="s1">faq (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">question </span><span class="s0">text not null,</span>
+    <span class="s1">answer </span><span class="s0">text not null</span>
+<span class="s1">)</span><span class="s0">;</span>
+alter table <span class="s1">faq </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+create table <span class="s1">voivodeship (</span>
+  id <span class="s0">int not null primary key auto_increment,</span>
+  <span class="s1">voivodeship </span><span class="s0">text not null</span>
+<span class="s1">)</span><span class="s0">;</span>
+alter table <span class="s1">voivodeship </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+create table <span class="s1">city (</span>
+  id <span class="s0">int not null primary key auto_increment,</span>
+  name text not null,
+  <span class="s1">voivodeship </span><span class="s0">int not null,</span>
+  foreign key <span class="s1">(voivodeship) </span><span class="s0">references </span><span class="s1">voivodeship(id)</span>
+)<span class="s0">;</span>
+alter table <span class="s1">city </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+create table <span class="s1">keywords (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">keyword </span><span class="s0">text not null</span>
+<span class="s1">)</span><span class="s0">;</span>
+alter table <span class="s1">keywords </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+create table <span class="s1">type (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">type </span><span class="s0">text not null</span>
+<span class="s1">)</span><span class="s0">;</span>
+alter table <span class="s1">type </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+create table <span class="s1">article_topic (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">topic </span><span class="s0">text not null</span>
+<span class="s1">)</span><span class="s0">;</span>
+alter table <span class="s1">article_topic </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+create table <span class="s1">article (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">topic </span><span class="s0">int not null,</span>
+    <span class="s1">content </span><span class="s0">text,</span>
+    <span class="s1">pubdate </span><span class="s0">TIMESTAMP default current_timestamp,</span>
+    <span class="s1">title </span><span class="s0">text not null,</span>
+    <span class="s1">author </span><span class="s0">text not null,</span>
+    foreign key <span class="s1">(topic) </span><span class="s0">references </span><span class="s1">article_topic(id)</span>
+    )<span class="s0">;</span>
+alter table <span class="s1">article </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+
+create table <span class="s1">message_topic (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">topic </span><span class="s0">text not null</span>
+<span class="s1">)</span><span class="s0">;</span>
+alter table <span class="s1">message_topic </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+insert into <span class="s1">message_topic(topic) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'Opinia o aplikacji'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">message_topic(topic) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'Zgłoś problem'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">message_topic(topic) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'Inny'</span><span class="s1">)</span><span class="s0">;</span>
+
+create table <span class="s1">user_message (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">topic </span><span class="s0">int not null,</span>
+    name text not null,
+    <span class="s1">surname </span><span class="s0">text not null,</span>
+    <span class="s1">mail </span><span class="s0">text not null,</span>
+    <span class="s1">content </span><span class="s0">text not null,</span>
+    <span class="s1">answer </span><span class="s0">text,</span>
+    <span class="s1">public </span><span class="s0">int default </span><span class="s3">0</span><span class="s0">,</span>
+    foreign key <span class="s1">(topic) </span><span class="s0">references </span><span class="s1">message_topic(id)</span>
+)<span class="s0">;</span>
+alter table <span class="s1">user_message </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">user_message</span><span class="s0">;</span>
+
+create table comment <span class="s1">(</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">pubdate </span><span class="s0">timestamp default current_timestamp,</span>
+    <span class="s1">author </span><span class="s0">text not null,</span>
+    <span class="s1">content </span><span class="s0">text not null,</span>
+    <span class="s1">article </span><span class="s0">int not null,</span>
+    foreign key <span class="s1">(article) </span><span class="s0">references </span><span class="s1">article(id)</span>
+)<span class="s0">;</span>
+alter table comment default character set <span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+create table <span class="s1">location (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    name text not null,
+    description text not null,
+    <span class="s1">type </span><span class="s0">int not null,</span>
+    foreign key <span class="s1">(type) </span><span class="s0">references </span><span class="s1">type(id)</span><span class="s0">,</span>
+    <span class="s1">city </span><span class="s0">int not null,</span>
+    foreign key <span class="s1">(city) </span><span class="s0">references </span><span class="s1">city(id)</span><span class="s0">,</span>
+    <span class="s1">street </span><span class="s0">text,</span>
+    number text,
+    <span class="s1">postcode </span><span class="s0">text,</span>
+    <span class="s1">position </span><span class="s0">text not null</span>
+<span class="s1">)</span><span class="s0">;</span>
+alter table <span class="s1">location </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+create table <span class="s1">photo (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">photo </span><span class="s0">text not null,</span>
+    <span class="s1">location </span><span class="s0">int not null,</span>
+    foreign key <span class="s1">(location) </span><span class="s0">references </span><span class="s1">location(id)</span><span class="s0">,</span>
+    <span class="s1">url </span><span class="s0">text not null</span>
+<span class="s1">)</span><span class="s0">;</span>
+alter table <span class="s1">photo </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+ALTER TABLE <span class="s1">photo </span><span class="s0">ADD </span><span class="s1">visibility </span><span class="s0">int</span><span class="s1">(</span><span class="s3">1</span><span class="s1">) </span><span class="s0">default </span><span class="s3">1</span><span class="s0">;</span>
+
+
+
+create table <span class="s1">comment_location (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">pubdate </span><span class="s0">timestamp default current_timestamp</span><span class="s1">()</span><span class="s0">,</span>
+    <span class="s1">author </span><span class="s0">text not null,</span>
+    <span class="s1">content </span><span class="s0">text not null,</span>
+    <span class="s1">location </span><span class="s0">int not null,</span>
+    foreign key <span class="s1">(location) </span><span class="s0">references </span><span class="s1">location(id)</span>
+)<span class="s0">;</span>
+alter table <span class="s1">comment_location </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+
+
+create table <span class="s1">aboutus (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">content </span><span class="s0">text not null</span>
+<span class="s1">)</span><span class="s0">;</span>
+alter table <span class="s1">aboutus </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+<span class="s4">/*------------------*/</span>
+
+/*Lista województw*/
+<span class="s0">insert into </span><span class="s1">voivodeship(voivodeship) </span><span class="s0">values</span>
+ <span class="s1">(</span><span class="s2">'dolnośląskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'kujawsko-pomorskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'lubelskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'lubuskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'łódzkie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'małopolskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'mazowieckie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'opolskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'podkarpackie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'podlaskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'pomorskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'śląskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'świętokrzyskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'warmińsko-mazurskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'wielkopolskie'</span><span class="s1">)</span><span class="s0">,</span>
+ <span class="s1">(</span><span class="s2">'zachodniopomorskie'</span><span class="s1">)</span><span class="s0">;</span>
+
+insert into <span class="s1">article_topic(topic) </span><span class="s0">value</span><span class="s1">(</span><span class="s2">'W Polsce'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">article_topic(topic) </span><span class="s0">value</span><span class="s1">(</span><span class="s2">'Za granicą'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">article_topic(topic) </span><span class="s0">value</span><span class="s1">(</span><span class="s2">'Transport'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">article_topic(topic) </span><span class="s0">value</span><span class="s1">(</span><span class="s2">'Ciekawostki'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">article_topic(topic) </span><span class="s0">value</span><span class="s1">(</span><span class="s2">'Porady'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">article_topic(topic) </span><span class="s0">value</span><span class="s1">(</span><span class="s2">'Inne'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">article_topic(topic) </span><span class="s0">value</span><span class="s1">(</span><span class="s2">'Wydarzenia'</span><span class="s1">)</span><span class="s0">;</span>
+
+
+insert into <span class="s1">type(type) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Zamek/Pałac'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">type(type) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Świątynia'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">type(type) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Hotel'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">type(type) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Restauracja'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">type(type) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Inne'</span><span class="s1">)</span><span class="s0">;</span>
+
+
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'CentralAutoLogin'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'szlak'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'logo'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Mapa'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Obiekt zabytkowy'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Flag'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Legenda'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Disambig'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'information_icon'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Red_pog'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Portal'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Herb'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Wikivoyage'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Quote-alpha'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'svg'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'plan'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">keywords(keyword) </span><span class="s0">value </span><span class="s1">(</span><span class="s2">'Plan'</span><span class="s1">)</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">city</span><span class="s0">;</span>
+
+insert into <span class="s1">city(</span><span class="s0">name, </span><span class="s1">voivodeship) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'Kraków'</span><span class="s0">, </span><span class="s2">'1'</span><span class="s1">)</span><span class="s0">;</span>
+
+insert into <span class="s1">aboutus(content) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'Pomocnik Turysty to nowa aplikacja na polskim rynku, która ma ułatwić podróżowanie każdemu z nas'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">aboutus(content) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'Przed wyruszeniem na wycieczkę, niezbędne jest odpowiednie przygotowanie. Należy zapoznać się z informacjami 
+o atrakcjach turystycznych w miejscu, do którego się wybieramy.'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">aboutus(content) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'Warto poznać opinie, czy dane miejsce jest warte odwiedzenia czy adres danego miejsca. 
+Nie można zapomnieć też o restauracjach czy hotelach, bo przecież musimy mieć gdzie zjeść i spać.'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">aboutus(content) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'Z pomocą przychodzi Pomocnik Turysty. Dzięki naszej aplikacji dowiesz się wszystkich niezbędnych informacji o 
+atrakcjach turystycznych, poczytasz opinie pozostałych turystów, poczytasz aktualności ze świata turystyki, dowiesz się o ciekawych wydarzeniach 
+oraz zaplanujesz krok po kroku swoją idealną podróż!'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">aboutus(content) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'Pomocnik Turysty to skarbnica wiedzy niezbędnej każdemu turysty, który nie lubi spontanicznych wyjazdów, 
+a zamiast tego woli zaplanować podróż od A do Z.'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">aboutus(content) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'Przekonaj się jakie korzyści niesie nasza aplikacja. Załóż konto już teraz i odkryj, co dla Ciebie przygotowaliśmy!'</span><span class="s1">)</span><span class="s0">;</span>
+
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">aboutus</span><span class="s0">;</span>
+delete from <span class="s1">aboutus </span><span class="s0">where </span><span class="s1">id &gt;</span><span class="s3">0</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">photo</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">location</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">city</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">article_topic</span><span class="s0">;</span>
+show tables;
+
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">article</span><span class="s0">;</span>
+insert into <span class="s1">article(topic</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, </span><span class="s1">title</span><span class="s0">, </span><span class="s1">author) </span><span class="s0">values </span><span class="s1">(</span><span class="s3">1</span><span class="s0">, </span><span class="s2">'Testowy artykuł'</span><span class="s0">, </span><span class="s2">'TEST'</span><span class="s0">, </span><span class="s2">'Damian'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">article(topic</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, </span><span class="s1">title</span><span class="s0">, </span><span class="s1">author) </span><span class="s0">values </span><span class="s1">(</span><span class="s3">1</span><span class="s0">, </span><span class="s2">'Testowy artykuł 2'</span><span class="s0">, </span><span class="s2">'TEST 2'</span><span class="s0">, </span><span class="s2">'Damian'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">article(topic</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, </span><span class="s1">title</span><span class="s0">, </span><span class="s1">author) </span><span class="s0">values </span><span class="s1">(</span><span class="s3">2</span><span class="s0">, </span><span class="s2">'Testowy artykuł 3'</span><span class="s0">, </span><span class="s2">'TEST 3'</span><span class="s0">, </span><span class="s2">'DK'</span><span class="s1">)</span><span class="s0">;</span>
+
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">voivodeship</span><span class="s0">;</span>
+
+select <span class="s1">location.id </span><span class="s0">from </span><span class="s1">location</span><span class="s0">, </span><span class="s1">city </span><span class="s0">where </span><span class="s1">city.voivodeship = </span><span class="s3">13</span><span class="s0">;</span>
+
+select <span class="s1">location.id </span><span class="s0">from </span><span class="s1">location</span><span class="s0">, </span><span class="s1">city</span><span class="s0">, </span><span class="s1">voivodeship</span>
+<span class="s0">where </span><span class="s1">location.type=</span><span class="s3">1 </span><span class="s0">and </span><span class="s1">city.voivodeship=</span><span class="s3">12 </span><span class="s0">and </span><span class="s1">city.voivodeship = voivodeship.id </span><span class="s0">and </span><span class="s1">city.id = location.city </span><span class="s0">order by </span><span class="s1">location.id </span><span class="s0">desc;</span>
+
+show tables;
+
+
+CREATE TABLE IF NOT EXISTS <span class="s1">`users` (</span>
+ `id` <span class="s0">int</span><span class="s1">(</span><span class="s3">11</span><span class="s1">) </span><span class="s0">NOT NULL AUTO_INCREMENT,</span>
+ <span class="s1">`username` </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">50</span><span class="s1">) </span><span class="s0">NOT NULL,</span>
+ <span class="s1">`email` </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">50</span><span class="s1">) </span><span class="s0">NOT NULL,</span>
+ <span class="s1">`password` </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">50</span><span class="s1">) </span><span class="s0">NOT NULL,</span>
+ <span class="s1">`trn_date` </span><span class="s0">datetime NOT NULL,</span>
+ PRIMARY KEY <span class="s1">(`id`)</span>
+ )<span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">users</span><span class="s0">;</span>
+
+CREATE TABLE IF NOT EXISTS <span class="s1">`users` (</span>
+ `id` <span class="s0">int</span><span class="s1">(</span><span class="s3">11</span><span class="s1">) </span><span class="s0">NOT NULL AUTO_INCREMENT,</span>
+ <span class="s1">`name` </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">50</span><span class="s1">) </span><span class="s0">NOT NULL,</span>
+ <span class="s1">`surname` </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">50</span><span class="s1">) </span><span class="s0">NOT NULL,</span>
+ <span class="s1">`login` </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">50</span><span class="s1">) </span><span class="s0">NOT NULL,</span>
+ <span class="s1">`email` </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">50</span><span class="s1">) </span><span class="s0">NOT NULL,</span>
+ <span class="s1">`password` </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">50</span><span class="s1">) </span><span class="s0">NOT NULL,</span>
+ <span class="s1">`registerdate` </span><span class="s0">datetime NOT NULL,</span>
+ <span class="s1">`admin` </span><span class="s0">int</span><span class="s1">(</span><span class="s3">1</span><span class="s1">) </span><span class="s0">default </span><span class="s3">0</span><span class="s0">,</span>
+  PRIMARY KEY <span class="s1">(`id`)</span>
+ )<span class="s0">;</span>
+alter table <span class="s1">users </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+alter table <span class="s1">users </span><span class="s0">add column </span><span class="s1">image </span><span class="s0">int not null default </span><span class="s3">1</span><span class="s0">;</span>
+delete from <span class="s1">users </span><span class="s0">where </span><span class="s1">id &gt;</span><span class="s3">0</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">users</span><span class="s0">;</span>
+drop table <span class="s1">users</span><span class="s0">;</span>
+update <span class="s1">users </span><span class="s0">set admin</span><span class="s1">=</span><span class="s3">1 </span><span class="s0">where </span><span class="s1">login=</span><span class="s2">'admin'</span><span class="s0">;</span>
+update <span class="s1">users </span><span class="s0">set </span><span class="s1">image=</span><span class="s3">2 </span><span class="s0">where </span><span class="s1">login=</span><span class="s2">'admin'</span><span class="s0">;</span>
+show tables;
+
+
+create table <span class="s1">location_comment (</span>
+  id <span class="s0">int not null primary key auto_increment,</span>
+  <span class="s1">location </span><span class="s0">int not null,</span>
+  <span class="s1">author </span><span class="s0">int not null,</span>
+  <span class="s1">content </span><span class="s0">text not null,</span>
+  <span class="s1">pubdate </span><span class="s0">TIMESTAMP default current_timestamp,</span>
+  foreign key<span class="s1">(location) </span><span class="s0">references </span><span class="s1">location(id)</span><span class="s0">,</span>
+  foreign key<span class="s1">(author) </span><span class="s0">references </span><span class="s1">users(id)</span>
+)<span class="s0">;</span>
+alter table <span class="s1">location_comment </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+create table <span class="s1">location_subcomment (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    comment int not null,
+    <span class="s1">content </span><span class="s0">text not null,</span>
+    <span class="s1">pubdate </span><span class="s0">TIMESTAMP default current_timestamp,</span>
+    <span class="s1">author </span><span class="s0">int not null,</span>
+    foreign key <span class="s1">(</span><span class="s0">comment</span><span class="s1">) </span><span class="s0">references </span><span class="s1">location_comment(id)</span><span class="s0">,</span>
+    foreign key<span class="s1">(author) </span><span class="s0">references </span><span class="s1">users(id)</span>
+)<span class="s0">;</span>
+alter table <span class="s1">location_subcomment </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+insert into <span class="s1">location_comment(author</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, </span><span class="s1">location) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">, </span><span class="s2">'Super miejsce!'</span><span class="s0">, </span><span class="s2">'55'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">location_comment(author</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, </span><span class="s1">location) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">, </span><span class="s2">'Ale miejscówka!'</span><span class="s0">, </span><span class="s2">'55'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">location_comment(author</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, </span><span class="s1">location) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">, </span><span class="s2">'Sprzedam opla!'</span><span class="s0">, </span><span class="s2">'55'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">location_comment(author</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, </span><span class="s1">location) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">, </span><span class="s2">'Inny ten ten!'</span><span class="s0">, </span><span class="s2">'56'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">location_subcomment(author</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, comment</span><span class="s1">) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">, </span><span class="s2">'Zajebiste!'</span><span class="s0">, </span><span class="s2">'1'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">location_subcomment(author</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, comment</span><span class="s1">) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">, </span><span class="s2">'Po ile opelek?!'</span><span class="s0">, </span><span class="s2">'3'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">location_subcomment(author</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, comment</span><span class="s1">) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">, </span><span class="s2">'Dam 1500 jak z gazem!'</span><span class="s0">, </span><span class="s2">'3'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">location_comment(author</span><span class="s0">, </span><span class="s1">content</span><span class="s0">, </span><span class="s1">location) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">, </span><span class="s2">'Inny ten ten! komentarz tak idziwny jakis dlugi inny nietypowy sprawdze czy ten tekst sie nie nalozy tam gdzie go nie potrzeba bedzie ciekawie olololo nie wiem co pisac dalej to tylko pod testy sprzedam opla hehehe '</span><span class="s0">, </span><span class="s2">'55'</span><span class="s1">)</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">location_comment</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">location_subcomment</span><span class="s0">;</span>
+
+create table <span class="s1">location_rate (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    <span class="s1">author </span><span class="s0">int not null,</span>
+    <span class="s1">location </span><span class="s0">int not null,</span>
+    <span class="s1">rate </span><span class="s0">int not null,</span>
+    foreign key<span class="s1">(author) </span><span class="s0">references </span><span class="s1">users(id)</span><span class="s0">,</span>
+    foreign key<span class="s1">(location) </span><span class="s0">references </span><span class="s1">location(id)</span>
+)<span class="s0">;</span>
+alter table <span class="s1">location_rate </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+insert into <span class="s1">location_rate(author</span><span class="s0">, </span><span class="s1">location</span><span class="s0">, </span><span class="s1">rate) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">,</span><span class="s2">'55'</span><span class="s0">,</span><span class="s2">'5'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">location_rate(author</span><span class="s0">, </span><span class="s1">location</span><span class="s0">, </span><span class="s1">rate) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">,</span><span class="s2">'55'</span><span class="s0">,</span><span class="s2">'4'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">location_rate(author</span><span class="s0">, </span><span class="s1">location</span><span class="s0">, </span><span class="s1">rate) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">,</span><span class="s2">'55'</span><span class="s0">,</span><span class="s2">'5'</span><span class="s1">)</span><span class="s0">;</span>
+insert into <span class="s1">location_rate(author</span><span class="s0">, </span><span class="s1">location</span><span class="s0">, </span><span class="s1">rate) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'1'</span><span class="s0">,</span><span class="s2">'55'</span><span class="s0">,</span><span class="s2">'2'</span><span class="s1">)</span><span class="s0">;</span>
+
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">location_rate</span><span class="s0">;</span>
+
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">users</span><span class="s0">;</span>
+
+create table <span class="s1">users_favourite (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    user int not null,
+    <span class="s1">location </span><span class="s0">int not null,</span>
+    foreign key <span class="s1">(</span><span class="s0">user</span><span class="s1">) </span><span class="s0">references </span><span class="s1">users(id)</span><span class="s0">,</span>
+    foreign key<span class="s1">(location) </span><span class="s0">references </span><span class="s1">location(id)</span>
+)<span class="s0">;</span>
+alter table <span class="s1">users_favourite </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">users_favourite</span><span class="s0">;</span>
+
+create table <span class="s1">sysinfo (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    name text not null,
+    value text not null
+<span class="s1">)</span><span class="s0">;</span>
+
+insert into <span class="s1">sysinfo(</span><span class="s0">name,value</span><span class="s1">) </span><span class="s0">values </span><span class="s1">(</span><span class="s2">'profile-photo'</span><span class="s0">,</span><span class="s3">10</span><span class="s1">)</span><span class="s0">;</span>
+
+create table <span class="s1">article_comment(</span>
+  id <span class="s0">int not null primary key auto_increment,</span>
+  <span class="s1">content </span><span class="s0">text not null,</span>
+  <span class="s1">article </span><span class="s0">int not null,</span>
+  <span class="s1">author </span><span class="s0">int not null,</span>
+  <span class="s1">pubdate </span><span class="s0">TIMESTAMP default current_timestamp,</span>
+  foreign key<span class="s1">(article) </span><span class="s0">references </span><span class="s1">article(id)</span><span class="s0">,</span>
+  foreign key<span class="s1">(author) </span><span class="s0">references </span><span class="s1">users(id)</span>
+)<span class="s0">;</span>
+alter table <span class="s1">article_comment </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">location</span><span class="s0">;</span>
+create table <span class="s1">article_subcomment (</span>
+  id <span class="s0">int not null primary key auto_increment,</span>
+  <span class="s1">content </span><span class="s0">text not null,</span>
+  comment int not null,
+  <span class="s1">author </span><span class="s0">int not null,</span>
+  <span class="s1">pubdate </span><span class="s0">TIMESTAMP default current_timestamp,</span>
+  foreign key<span class="s1">(</span><span class="s0">comment</span><span class="s1">) </span><span class="s0">references </span><span class="s1">article_comment(id)</span><span class="s0">,</span>
+  foreign key<span class="s1">(author) </span><span class="s0">references </span><span class="s1">users(id)</span>
+)<span class="s0">;</span>
+alter table <span class="s1">article_subcomment </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+
+create table event <span class="s1">(</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    name text not null,
+    <span class="s1">startdate </span><span class="s0">date not null,</span>
+    <span class="s1">enddate </span><span class="s0">date not null,</span>
+    <span class="s1">location </span><span class="s0">int not null,</span>
+    description text not null,
+    foreign key <span class="s1">(location) </span><span class="s0">references </span><span class="s1">location(id)</span>
+)<span class="s0">;</span>
+alter table event default character set <span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_unicode_ci</span><span class="s0">;</span>
+
+create table <span class="s1">event_favourite (</span>
+    id <span class="s0">int not null primary key auto_increment,</span>
+    user int not null,
+    event int not null,
+    foreign key<span class="s1">(</span><span class="s0">user</span><span class="s1">) </span><span class="s0">references </span><span class="s1">users(id)</span><span class="s0">,</span>
+    foreign key<span class="s1">(</span><span class="s0">event</span><span class="s1">) </span><span class="s0">references event</span><span class="s1">(id)</span>
+)<span class="s0">;</span>
+alter table <span class="s1">event_favourite </span><span class="s0">default character set </span><span class="s1">utf8 </span><span class="s0">collate </span><span class="s1">utf8_u/nicode_ci</span><span class="s0">;</span>
+
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">event_favourite</span><span class="s0">;</span>
+
+select event<span class="s1">.name </span><span class="s0">as </span><span class="s2">'eventname'</span><span class="s0">, </span><span class="s1">location.name </span><span class="s0">as </span><span class="s2">'eventlocation'</span><span class="s0">, event</span><span class="s1">.startdate </span><span class="s0">as </span><span class="s2">'startdate'</span><span class="s0">,</span>
+            event<span class="s1">.enddate </span><span class="s0">as </span><span class="s2">'enddate' </span><span class="s0">from event, </span><span class="s1">location</span><span class="s0">, </span><span class="s1">users</span><span class="s0">, </span><span class="s1">event_favourite </span><span class="s0">where event</span><span class="s1">.id = event_favourite.event</span>
+            <span class="s0">and </span><span class="s1">event_favourite.user = </span><span class="s3">14  </span><span class="s0">and event</span><span class="s1">.location = location.id </span><span class="s0">and event</span><span class="s1">.enddate &gt;= </span><span class="s0">current_date;</span>
+
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">users</span><span class="s0">;</span>
+
+update <span class="s1">users </span><span class="s0">set name</span><span class="s1">=</span><span class="s2">''</span><span class="s0">, </span><span class="s1">surname=</span><span class="s2">''</span><span class="s0">, </span><span class="s1">email=</span><span class="s2">''</span><span class="s0">, </span><span class="s1">login=</span><span class="s2">'KONTO USUNIĘTE'</span><span class="s0">, password</span><span class="s1">=</span><span class="s2">''</span><span class="s0">, </span><span class="s1">registerdate=</span><span class="s2">'' </span><span class="s0">where </span><span class="s1">id=</span><span class="s3">15</span><span class="s0">;</span>
+
+select <span class="s1">* </span><span class="s0">from event;</span>
+
+create table <span class="s1">active_session (</span>
+  id <span class="s0">int not null primary key auto_increment,</span>
+  user int not null,
+  <span class="s1">ip </span><span class="s0">text not null,</span>
+  <span class="s1">browser </span><span class="s0">text not null,</span>
+  foreign key<span class="s1">(</span><span class="s0">user</span><span class="s1">) </span><span class="s0">references </span><span class="s1">users(id)</span>
+)<span class="s0">;</span>
+
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">users</span><span class="s0">;</span>
+
+
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">active_session</span><span class="s0">;</span>
+
+create table logs<span class="s1">(</span>
+  id <span class="s0">int not null primary key auto_increment,</span>
+  <span class="s1">information </span><span class="s0">text not null,</span>
+  <span class="s1">type </span><span class="s0">int,</span>
+  date timestamp default current_timestamp<span class="s1">()</span>
+)<span class="s0">;</span>
+
+delimiter <span class="s1">|</span>
+<span class="s0">create trigger </span><span class="s1">t_newsessioninfo </span><span class="s0">after insert on </span><span class="s1">active_session</span>
+<span class="s0">for each row</span>
+begin
+declare <span class="s1">newsession </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+declare <span class="s1">username </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">40</span><span class="s1">)</span><span class="s0">;</span>
+set <span class="s1">username = (</span><span class="s0">select </span><span class="s1">login </span><span class="s0">from </span><span class="s1">users </span><span class="s0">where </span><span class="s1">users.id = NEW.user)</span><span class="s0">;</span>
+set <span class="s1">newsession = CONCAT(</span><span class="s2">'Aktywna sesja: Użytkownik '</span><span class="s0">, </span><span class="s1">username</span><span class="s0">, </span><span class="s2">'; IP: '</span><span class="s0">, </span><span class="s1">NEW.ip)</span><span class="s0">;</span>
+insert into logs <span class="s1">(information</span><span class="s0">, </span><span class="s1">type) </span><span class="s0">values </span><span class="s1">(newsession</span><span class="s0">, </span><span class="s2">'1'</span><span class="s1">)</span><span class="s0">;</span>
+end <span class="s1">|</span>
+<span class="s0">delimiter ;</span>
+
+
+delimiter <span class="s1">|</span>
+<span class="s0">create trigger </span><span class="s1">t_finishsession </span><span class="s0">after delete on </span><span class="s1">active_session</span>
+<span class="s0">for each row</span>
+begin
+declare <span class="s1">newsession </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+declare <span class="s1">username </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">40</span><span class="s1">)</span><span class="s0">;</span>
+set <span class="s1">username = (</span><span class="s0">select </span><span class="s1">login </span><span class="s0">from </span><span class="s1">users </span><span class="s0">where </span><span class="s1">users.id = </span><span class="s0">OLD</span><span class="s1">.user)</span><span class="s0">;</span>
+set <span class="s1">newsession = CONCAT(</span><span class="s2">'Koniec sesji: Użytkownik '</span><span class="s0">, </span><span class="s1">username</span><span class="s0">, </span><span class="s2">'; IP: '</span><span class="s0">, OLD</span><span class="s1">.ip)</span><span class="s0">;</span>
+insert into logs <span class="s1">(information</span><span class="s0">, </span><span class="s1">type) </span><span class="s0">values </span><span class="s1">(newsession</span><span class="s0">, </span><span class="s2">'2'</span><span class="s1">)</span><span class="s0">;</span>
+end <span class="s1">|</span>
+<span class="s0">delimiter ;</span>
+
+delimiter <span class="s1">|</span>
+<span class="s0">create trigger </span><span class="s1">t_newuser </span><span class="s0">after insert on </span><span class="s1">users</span>
+<span class="s0">for each row</span>
+begin
+declare <span class="s1">newuser </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+declare <span class="s1">username </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">40</span><span class="s1">)</span><span class="s0">;</span>
+set <span class="s1">username = (</span><span class="s0">select </span><span class="s1">login </span><span class="s0">from </span><span class="s1">users </span><span class="s0">where </span><span class="s1">users.id = NEW.id)</span><span class="s0">;</span>
+set <span class="s1">newuser = CONCAT(</span><span class="s2">'Nowy użytkownik:'</span><span class="s0">, </span><span class="s1">username)</span><span class="s0">;</span>
+insert into logs <span class="s1">(information</span><span class="s0">, </span><span class="s1">type) </span><span class="s0">values </span><span class="s1">(newuser</span><span class="s0">, </span><span class="s2">'3'</span><span class="s1">)</span><span class="s0">;</span>
+end <span class="s1">|</span>
+<span class="s0">delimiter ;</span>
+
+delimiter <span class="s1">|</span>
+<span class="s0">create trigger </span><span class="s1">t_newlocation </span><span class="s0">after insert on </span><span class="s1">location</span>
+<span class="s0">for each row</span>
+begin
+declare <span class="s1">newlocation </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+declare <span class="s1">locationname </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">40</span><span class="s1">)</span><span class="s0">;</span>
+set <span class="s1">locationname = (</span><span class="s0">select name from </span><span class="s1">location </span><span class="s0">where </span><span class="s1">location.id = NEW.id)</span><span class="s0">;</span>
+set <span class="s1">newlocation = CONCAT(</span><span class="s2">'Nowa lokacja: '</span><span class="s0">, </span><span class="s1">locationname)</span><span class="s0">;</span>
+insert into logs <span class="s1">(information</span><span class="s0">, </span><span class="s1">type) </span><span class="s0">values </span><span class="s1">(newlocation</span><span class="s0">, </span><span class="s2">'4'</span><span class="s1">)</span><span class="s0">;</span>
+end <span class="s1">|</span>
+<span class="s0">delimiter ;</span>
+
+delimiter <span class="s1">|</span>
+<span class="s0">create trigger </span><span class="s1">t_newevent </span><span class="s0">after insert on event</span>
+for each row
+begin
+declare <span class="s1">newevent </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+declare <span class="s1">eventname </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+declare <span class="s1">locationname </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+set <span class="s1">eventname = (</span><span class="s0">select name from event where event</span><span class="s1">.id = NEW.id)</span><span class="s0">;</span>
+set <span class="s1">locationname = (</span><span class="s0">select name from </span><span class="s1">location </span><span class="s0">where </span><span class="s1">location.id = NEW.location)</span><span class="s0">;</span>
+set <span class="s1">newevent = CONCAT(</span><span class="s2">'Nowe wydarzenie: '</span><span class="s0">, </span><span class="s1">eventname</span><span class="s0">, </span><span class="s2">' w lokacji: '</span><span class="s0">, </span><span class="s1">locationname)</span><span class="s0">;</span>
+insert into logs <span class="s1">(information</span><span class="s0">, </span><span class="s1">type) </span><span class="s0">values </span><span class="s1">(newevent</span><span class="s0">, </span><span class="s2">'5'</span><span class="s1">)</span><span class="s0">;</span>
+end <span class="s1">|</span>
+<span class="s0">delimiter ;</span>
+
+delimiter <span class="s1">|</span>
+<span class="s0">create trigger </span><span class="s1">t_newarticle </span><span class="s0">after insert on </span><span class="s1">article</span>
+<span class="s0">for each row</span>
+begin
+declare <span class="s1">newarticle </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+declare <span class="s1">articlename </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+set <span class="s1">articlename = (</span><span class="s0">select </span><span class="s1">title </span><span class="s0">from </span><span class="s1">article </span><span class="s0">where </span><span class="s1">article.id = NEW.id)</span><span class="s0">;</span>
+set <span class="s1">newarticle = CONCAT(</span><span class="s2">'Nowy artykuł: '</span><span class="s0">, </span><span class="s1">articlename)</span><span class="s0">;</span>
+insert into logs <span class="s1">(information</span><span class="s0">, </span><span class="s1">type) </span><span class="s0">values </span><span class="s1">(newarticle</span><span class="s0">, </span><span class="s2">'6'</span><span class="s1">)</span><span class="s0">;</span>
+end <span class="s1">|</span>
+<span class="s0">delimiter ;</span>
+
+delimiter <span class="s1">|</span>
+<span class="s0">create trigger </span><span class="s1">t_deletelocation </span><span class="s0">before delete on </span><span class="s1">location</span>
+<span class="s0">for each row</span>
+begin
+declare <span class="s1">locationname </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+declare <span class="s1">location </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+set <span class="s1">locationname = (</span><span class="s0">select name from </span><span class="s1">location </span><span class="s0">where </span><span class="s1">location.id = </span><span class="s0">OLD</span><span class="s1">.id)</span><span class="s0">;</span>
+set <span class="s1">location = CONCAT(</span><span class="s2">'Usunięta lokacja: '</span><span class="s0">, </span><span class="s1">locationname)</span><span class="s0">;</span>
+insert into logs <span class="s1">(information</span><span class="s0">, </span><span class="s1">type) </span><span class="s0">values </span><span class="s1">(location</span><span class="s0">, </span><span class="s2">'7'</span><span class="s1">)</span><span class="s0">;</span>
+end <span class="s1">|</span>
+<span class="s0">delimiter ;</span>
+
+delimiter <span class="s1">|</span>
+<span class="s0">create trigger </span><span class="s1">t_deletearticle </span><span class="s0">before delete on </span><span class="s1">article</span>
+<span class="s0">for each row</span>
+begin
+declare <span class="s1">articlename </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+declare <span class="s1">article </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+set <span class="s1">articlename = (</span><span class="s0">select </span><span class="s1">title </span><span class="s0">from </span><span class="s1">article </span><span class="s0">where </span><span class="s1">article.id = </span><span class="s0">OLD</span><span class="s1">.id)</span><span class="s0">;</span>
+set <span class="s1">article = CONCAT(</span><span class="s2">'Usunięty artykuł: '</span><span class="s0">, </span><span class="s1">articlename)</span><span class="s0">;</span>
+insert into logs <span class="s1">(information</span><span class="s0">, </span><span class="s1">type) </span><span class="s0">values </span><span class="s1">(article</span><span class="s0">, </span><span class="s2">'8'</span><span class="s1">)</span><span class="s0">;</span>
+end <span class="s1">|</span>
+<span class="s0">delimiter ;</span>
+
+delimiter <span class="s1">|</span>
+<span class="s0">create trigger </span><span class="s1">t_deleteevent </span><span class="s0">before delete on event</span>
+for each row
+begin
+declare <span class="s1">eventname </span><span class="s0">varchar</span><span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+declare event varchar<span class="s1">(</span><span class="s3">80</span><span class="s1">)</span><span class="s0">;</span>
+set <span class="s1">eventname = (</span><span class="s0">select name from event where event</span><span class="s1">.id = </span><span class="s0">OLD</span><span class="s1">.id)</span><span class="s0">;</span>
+set event <span class="s1">= CONCAT(</span><span class="s2">'Usunięte wydarzenie: '</span><span class="s0">, </span><span class="s1">eventname)</span><span class="s0">;</span>
+insert into logs <span class="s1">(information</span><span class="s0">, </span><span class="s1">type) </span><span class="s0">values </span><span class="s1">(</span><span class="s0">event, </span><span class="s2">'9'</span><span class="s1">)</span><span class="s0">;</span>
+end <span class="s1">|</span>
+<span class="s0">delimiter ;</span>
+
+select <span class="s1">* </span><span class="s0">from logs;</span>
+show triggers;
+select <span class="s1">* </span><span class="s0">from </span><span class="s1">users</span><span class="s0">;</span></pre>
+</body>
+</html>

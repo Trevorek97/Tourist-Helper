@@ -151,6 +151,42 @@
             ?>
         <div class='guide-map' onclick='window.location="../../../mapa/index.php?location=<?php echo $id;?>"'>Zobacz na mapie!</div>
 
+        <?php if(isset($_SESSION["login"])) {
+            $sqltrip = "select trip.id as 'id', trip.name as 'name' from trip, users where users.login = '$log' and users.id = trip.user";
+            $resulttrip = $connection->query($sqltrip);
+            if (mysqli_num_rows($resulttrip) > 0) {
+                echo "<div class='guide-comment-container'>";
+                echo "<div class='guide-comment-title'>Dodaj lokację do swojej podroży!</div>";
+                echo "<form id='trips' method='post' action='trip.php?location=$id' class='trip-form'>";
+                echo "<select name='trip' id='trip-select' class='trip-select'>";
+                $tripcounter=0;
+                while ($rowtrip = $resulttrip->fetch_assoc()) {
+                    $rid = $rowtrip["id"];
+                    $rname = $rowtrip["name"];
+                    $sqltrip2 = "select * from triplocation where location = '$id' and trip = '$rid'";
+                    $resulttrip2 = $connection->query($sqltrip2);
+                    if(mysqli_num_rows($resulttrip2) == 0) {
+                        $tripcounter++;
+                        echo "<option value=$rid>" . $rname . "</option>";
+                    }
+                }
+                echo "</select>";
+                echo "<br>";
+                echo "<button class='guide-newtrip' id='tripbutton' type='submit'>Dodaj do podróży!</button>";
+                echo "</form>";
+                echo "<br><div class='guide-newtrip' onclick=\"window.location='../../../trip/newtrip'\">Utwórz nową podróż</div>";
+                echo"</div>";
+
+            } else {
+                echo "<div class='guide-comment-container'>";
+                echo "<div class='guide-comment-title'>Utwórz nową podróż, by móc dodawać do niej lokacje!</div>";
+                echo "<div class='guide-newtrip' onclick=\"window.location='../../../trip/newtrip'\">Dodaj podróż</div>";
+                echo "</div>";
+
+            }
+        }
+        ?>
+
         <div class="guide-comment-container">
             <div class="guide-comment-title">Oceny</div>
             <?php echo "<div class='guide-rate'>$avgrate</div>";
@@ -258,7 +294,6 @@
                         subcomment[i].style.display="inherit";
                         subcomment2[i].style.display="inherit";
                         subcomment3[i].style.display="inherit";
-
                     }
 
                 };
@@ -304,6 +339,12 @@
         tmp=tmp+1;
         if(tmp==len) tmp=0;
     };
+</script>
+<script>
+    var tripcounter = <?php echo json_encode($tripcounter);?>;
+    if(tripcounter == 0) {
+        document.getElementById('trips').style.display="none";
+    }
 </script>
     <?php echo $footer;?>
 </body>

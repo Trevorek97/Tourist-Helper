@@ -14,9 +14,9 @@ function mouseOnMenu(status)
 {
     var img=document.querySelectorAll(".imgmenu");
     if(status == '2') {
-        var pages = ["aktualnosci", "events", "guide", "zaplanuj", "mapa", "o-nas", "kontakt", "faq"];
+        var pages = ["aktualnosci", "events", "guide", "trip", "mapa", "o-nas", "kontakt", "faq"];
     } else if (status=='1') {
-        var pages = ["aktualnosci", "events", "guide", "zaplanuj", "mapa", "o-nas", "kontakt", "faq", "adminpanel"];
+        var pages = ["aktualnosci", "events", "guide", "trip", "mapa", "o-nas", "kontakt", "faq", "adminpanel"];
     } else if (status =='0') {
         var pages = ["aktualnosci", "guide", "mapa", "o-nas", "kontakt", "faq"];
     }

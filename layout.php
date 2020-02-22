@@ -76,6 +76,10 @@
         $pageTitle[44] = "Dodaj wydarzenie - Panel administracyjny";
         $pageTitle[45] = "Ulubione wydarzenia";
         $pageTitle[46] = "Logi";
+        $pageTitle[47] = "Planowanie podróży";
+        $pageTitle[48] = "Nowa podróż";
+        $pageTitle[49] = "Twoje podróże";
+        $pageTitle[50] = "Szczegóły podróży $var";
         return "<title>" . $pageTitle[$id] . $pageTitle[0] . "</title>";
     }
 

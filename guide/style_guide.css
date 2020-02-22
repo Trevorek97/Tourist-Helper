@@ -466,6 +466,41 @@ a {
     cursor:pointer;
 }
 
+.guide-newtrip {
+    width:40%;
+    background-color: #bb9300;
+    color: #292929;
+    border-radius:20px;
+    height:auto;
+    font-size:20px;
+    padding:10px 20px 10px 20px;
+    font-weight:600;
+    margin: 0 auto;
+    text-align:center;
+    border: 1px solid #292929;
+    display:block;
+}
+
+.guide-newtrip:hover {
+    background-color: #ddb500;
+    cursor:pointer;
+}
+
+.trip-form {
+    text-align:center;
+}
+
+.trip-select {
+    background-color: #ddb500;
+    color: #292929;
+    width:50%;
+    border: 1px solid #292929;
+    font-size:20px;
+    text-align:center;
+    border-radius:10px;
+    padding: 0 5px 0 5px;
+}
+
 
 @media only screen and (max-width: 600px) {
     .guide-container { padding:20px; width:85%}

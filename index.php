@@ -54,7 +54,7 @@
         <?php if(isset($_SESSION['login'])) {
             echo "<div class=\"imgcontainer\">
                     <img class=\"imgmenu\" src=\"img/zaplanuj.jpg\" alt=\"Zaplanuj!\">
-                    <div class=\"imgtext\">Zaplanuj!</div>
+                    <div class=\"imgtext\">Twoje podróże</div>
                   </div>"; } ?>
 
 

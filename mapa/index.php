@@ -5,6 +5,9 @@
     session_start();
     if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
 
+    if(isset($_GET["trip"])) {
+        $trip = $_GET["trip"];
+    }
 
     $i=0;
     $sql = "select id, position, name from location";
@@ -15,10 +18,21 @@
         $pos[$i] = $row["position"];
         $name[$i] =$row["name"];
         $id[$i] = $row["id"];
-        $tab[$i] = readPositions($pos[$i]);
-        $lat[$i] = $tab[$i][0];
-        $lon[$i] = $tab[$i][1];
-        $i++;
+        if (isset($_GET["trip"])) {
+            $sqltrip = "select * from triplocation where trip='$trip' and location='$id[$i]'";
+            $resulttrip = $connection->query($sqltrip);
+            if(mysqli_num_rows($resulttrip) > 0 ) {
+                $tab[$i] = readPositions($pos[$i]);
+                $lat[$i] = $tab[$i][0];
+                $lon[$i] = $tab[$i][1];
+                $i++;
+            }
+        } else {
+            $tab[$i] = readPositions($pos[$i]);
+            $lat[$i] = $tab[$i][0];
+            $lon[$i] = $tab[$i][1];
+            $i++;
+        }
     }
     if(isset($_GET["location"])) {
         $startid = $_GET["location"];

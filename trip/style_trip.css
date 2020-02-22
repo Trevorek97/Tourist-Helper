@@ -1,0 +1,163 @@
+#container
+{
+    width:80%;
+    margin: 0 auto;
+    background-image: linear-gradient(to bottom, #585459, #363237);
+    color:#DAAF21;
+    padding: 10px 20px 30px 20px;
+    border-radius:30px;
+}
+
+.tripcontainer {
+    width: 70%;
+    padding:10px;
+    background-color: #ccbb7b;
+    margin: 20px auto;
+    border-radius:20px;
+}
+
+.triptitle {
+    text-align:center;
+    font-size:25px;
+    color: #292929;
+}
+
+.button-newtrip {
+    background-color: #04b521;
+    color: #4B4B4B;
+    height:auto;
+    padding:15px;
+    border-radius:10px;
+    font-family: Ubuntu;
+    font-size:20px;
+    text-align: center;
+    cursor: pointer;
+    width:40%;
+    margin: 0 auto 10px auto;
+}
+
+.button-newtrip:hover {
+    background-color: #029300;
+    color: whitesmoke;
+    cursor:pointer;
+}
+
+.button-yourtrip {
+    background-color: #c9a904;
+    color: #4B4B4B;
+    height:auto;
+    padding:15px;
+    border-radius:10px;
+    font-family: Ubuntu;
+    font-size:20px;
+    text-align: center;
+    cursor: pointer;
+    width:40%;
+    margin: 0 auto 10px auto;
+}
+
+.button-yourtrip:hover {
+    background-color: #a78702;
+    color: whitesmoke;
+    cursor:pointer;
+}
+
+.tripcontainer {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    text-align:center;
+    width:95%;
+    border-radius:20px;
+    background-color: #ccbb7b;
+    padding:10px;
+    overflow:hidden;
+    border: 1px solid black;
+}
+
+.triptitle {
+    width:100%;
+    font-size:29px;
+    font-weight:600;
+    color:#292929;
+    margin-bottom:20px;
+}
+.description {
+    width:90%;
+    background-color: whitesmoke;
+    font-size:18px;
+    color: #292929;
+    padding:5px;
+    border-radius:10px;
+    margin: 0 auto;
+    display:block;
+    border:1px solid #292929;
+}
+
+.tripflex {
+    display:flex;
+    flex-wrap: wrap;
+    width:100%;
+    justify-content:center;
+
+}
+.triplocations {
+    flex: 0 21%;
+    padding:5px;
+    height:200px;
+    border-radius:20px;
+    color: #292929;
+    background-color: #aa9959;
+    margin:2px;
+}
+
+.tripdetails {
+    font-size:14px;
+    color: #292929;
+    text-align:left;
+    display:block;
+    padding-left:5px;
+}
+
+.tripbutton1 {
+    font-size: 14px;
+    background-color: #0b82c0;
+    color: #292929;
+    padding:5px;
+    display:block;
+}
+
+.tripbutton2 {
+    font-size: 14px;
+    background-color: #029300;
+    color: #292929;
+    padding:5px;
+    display:block;
+}
+
+.tripbutton3 {
+    font-size: 14px;
+    background-color: #ab3a3a;
+    color: #292929;
+    padding:5px;
+    display:block;
+}
+
+.tripbutton1:hover {
+    background-color: #0da4e0;
+    cursor:pointer;
+    color: #EEDD9D;
+}
+
+.tripbutton2:hover {
+    background-color: #02c00b;
+    cursor:pointer;
+    color: #EEED9D;
+}
+
+.tripbutton3:hover {
+    background-color: #891818;
+    cursor:pointer;
+    color: #EEED9D;
+}

@@ -1,6 +1,7 @@
 <?php
 include_once('../../../database/database.php');
 include_once('../../../layout.php');
+include('position.php');
 session_start();
 include("auth.php");
 $id = $_GET["id"];
@@ -11,11 +12,11 @@ $result = $connection->query($sql) or die ($connection->error);
 $row = $result->fetch_assoc();
 $name = $row["name"];
 $description = $row["description"];
-$sql2 = "select location.id as 'id', location.name as 'name', type.type as 'type', voivodeship.voivodeship as 'voivo',
+$sql2 = "select location.id as 'id', location.position as 'position', location.name as 'name', type.type as 'type', voivodeship.voivodeship as 'voivo',
         city.name as 'city' from location, type, city, voivodeship, triplocation where voivodeship.id = city.voivodeship
         and location.city = city.id and triplocation.location = location.id and location.type = type.id and triplocation.trip = '$id'";
 $result2 = $connection->query($sql2) or die ($connection->error);
-
+$i=0;
 ?>
 <!DOCTYPE html>
 <html lang="pl-PL">
@@ -55,10 +56,11 @@ echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '..
                 <div class='tripbutton1' onclick=\"window.location='../../../guide/search/location/index.php?id=$locid'\"><b>Szczegóły</b></div>
                 <div class='tripbutton2' onclick=\"window.location ='../../../mapa/index.php?location=$locid'\"><b>Zobacz na mapie</b></div>
                 <div class='tripbutton3' onclick=\"window.location ='trip.php?location=$locid&trip=$id'\"><b>Usuń z podróży</b></div>
-
             </div>";
-
-    }
+         $position[$i] = $row2["position"];
+         $tabid[$i] = $locid;
+            $i++;
+     }
     echo"</div><div class='button-newtrip' onclick='window.location=\"../../../mapa/index.php?trip=$id\"'>Mapa podróży</div>";
    echo "<div class='button-yourtrip' onclick='window.location=\"../../../guide/index.php\"'>Szukaj lokacji</div></div></div>";
 
@@ -72,9 +74,35 @@ echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '..
     Na tej podstawie znajdź i zasugeruj lokacje w pobliżu
     Wyświetl w tej stronie
     -->
-
-
-
+<?php
+    $sqldistance = "select distance from users where login = '$login'";
+    $resultdistance = $connection->query($sqldistance);
+    $rowdistance = $resultdistance->fetch_assoc();
+    $distance = $rowdistance["distance"];
+   $index= propositions($connection, $position, $tabid, $distance/111.196672);
+  if(sizeof($index) >0) {
+      echo "<div class='tripcontainer'>";
+      echo "<div class='triptitle'>Lokacje w pobliżu wybranych:</div>";
+      for ($i = 0; $i < sizeof($index); $i++) {
+          $sqlproposition = $sql2 = "select location.id as 'id', location.position as 'position', location.name as 'name', type.type as 'type', voivodeship.voivodeship as 'voivo',
+        city.name as 'city' from location, type, city, voivodeship where voivodeship.id = city.voivodeship
+        and location.city = city.id and location.type = type.id and location.id = '$index[$i]'";
+          $resultposition = $connection->query($sqlproposition) or die($connection->error);
+          $rowpos = $resultposition->fetch_assoc();
+          $locid = $rowpos["id"];
+          echo "<div class='triplocations'>
+                <div class='triptitle' style='font-size:16px'>" . $rowpos["name"] . "</div>
+                <div class='tripdetails'><b>Typ: </b>" . $rowpos["type"] . "</div>
+                <div class='tripdetails'><b>Województwo: </b>" . $rowpos["voivo"] . "</div>
+                <div class='tripdetails'><b>Miasto: </b>" . $rowpos["city"] . "</div>
+                <div class='tripbutton1' onclick=\"window.location='../../../guide/search/location/index.php?id=$locid'\"><b>Szczegóły</b></div>
+                <div class='tripbutton2' onclick=\"window.location ='../../../mapa/index.php?location=$locid'\"><b>Zobacz na mapie</b></div>
+                <div class='tripbutton3' onclick=\"window.location ='trip.php?location=$locid&trip=$id&reason=1'\"><b>Dodaj do podróży</b></div>
+            </div>";
+      }
+      echo "</div>";
+  }?>
+<br><br><br><br><br><br>
 <?php echo $footer;?>
 
 

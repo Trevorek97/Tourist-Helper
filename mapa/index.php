@@ -36,9 +36,15 @@
     }
     if(isset($_GET["location"])) {
         $startid = $_GET["location"];
+
     } else {
         $startid =  $row["id"];
         }
+    if(isset($_GET["location"]) || isset($_GET["trip"])) {
+        $zoom = 17;
+    } else {
+        $zoom = 13;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pl-PL">
@@ -65,7 +71,7 @@
     </div>
     <script src="OpenLayers.js"></script>
     <script>
-        let zoom = 13;
+        let zoom = <?php echo json_encode($zoom);?>;
         let fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
         let toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
         let markers = new OpenLayers.Layer.Markers( "Markers" );

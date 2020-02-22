@@ -4,6 +4,12 @@
     session_start();
     include("auth.php");
     if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
+    $log = $_SESSION["login"];
+    $sql = "select distance from users where login = '$log'";
+    $result = $connection->query($sql);
+    $row = $result->fetch_assoc();
+    $distance = $row["distance"];
+
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +36,13 @@
         <div class="profile-button" onclick="window.location='changephoto/index.php?&user=<?php echo $sesLog;?>'">Zmień zdjęcie profilowe</div>
         <div class="profile-button" onclick="window.location='favourites_location/index.php?&user=<?php echo $sesLog;?>'">Ulubione lokacje</div>
         <div class="profile-button" onclick="window.location='favourites_events/index.php?&user=<?php echo $sesLog;?>'">Zapisane wydarzenia</div>
+        <div class="profile-button" onclick="window.location='../trip/yourtrip/index.php'">Twoje podróże</div>
         <div class="profile-button" onclick="window.location='deleteaccount/index.php?&user=<?php echo $sesLog;?>'">Usuń konto</div>
+        <div class="profile-distancetitle">Dystans wyszukiwania lokacji w pobliżu:</div>
+        <form class="formdistance" method="POST" action="distance.php?login=<?php echo $log;?>">
+            <input class="inputdistance" type="number" name="distance" value="<?php echo $distance;?>">
+            <button class="inputbuttondistance" type="submit">Ustaw</button>
+        </form>
     </div>
 
 

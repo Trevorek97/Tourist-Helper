@@ -66,7 +66,7 @@ echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '..
 
     } else {
         echo "<div class='triptitle'>Nie dodałeś jeszcze żadnej lokacji do tej podróży</div>";
-        echo "<div class='button-yourtrip' onclick='window.location=\"../../../guide/index.php\"'>Szukaj lokacji</div>";
+        echo "<div class='button-yourtrip' onclick='window.location=\"../../../guide/index.php\"'>Szukaj lokacji</div></div>";
     }?>
 
     <!--TODO
@@ -79,8 +79,9 @@ echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '..
     $resultdistance = $connection->query($sqldistance);
     $rowdistance = $resultdistance->fetch_assoc();
     $distance = $rowdistance["distance"];
+    if(mysqli_num_rows($result2) > 0 ) {
    $index= propositions($connection, $position, $tabid, $distance/111.196672);
-  if(sizeof($index) >0) {
+  if(sizeof($index)>0) {
       echo "<div class='tripcontainer'>";
       echo "<div class='triptitle'>Lokacje w pobliżu wybranych:</div>";
       for ($i = 0; $i < sizeof($index); $i++) {
@@ -99,9 +100,12 @@ echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '..
                 <div class='tripbutton2' onclick=\"window.location ='../../../mapa/index.php?location=$locid'\"><b>Zobacz na mapie</b></div>
                 <div class='tripbutton3' onclick=\"window.location ='trip.php?location=$locid&trip=$id&reason=1'\"><b>Dodaj do podróży</b></div>
             </div>";
+          if($i==11) break;
       }
       echo "</div>";
-  }?>
+  }}
+
+    ?>
 <br><br><br><br><br><br>
 <?php echo $footer;?>
 

@@ -7,6 +7,14 @@ function useraction($connection, $id, $login, $reason) {
         $resultfavloc = $connection->query($sqlfavloc);
         $sqlfavevent = "delete from event_favourite where id = '$id'";
         $resultfavevent = $connection->query($sqlfavevent);
+        $sqltrip = "select id from trip where user='$id'";
+        $resulttrip = $connection->query($sqltrip);
+        $rowtrip = $resulttrip->fetch_assoc();
+        $tripid = $rowtrip["id"];
+        $sqltriplocation = "delete from triplocation where trip = '$tripid'";
+        $resulttriplocation = $connection->query($sqltriplocation);
+        $sqltrip2 = "delete from trip where user='$id'";
+        $resulttrip2 = $connection->query($sqltrip2);
         $sql = "update users set name='', surname='', email='', login='Konto usunięte', password='', admin='0' where id = '$id'";
         $result = $connection->query($sql);
         $message = "Usunięto użytkownika $login!";

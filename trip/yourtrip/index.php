@@ -41,6 +41,8 @@ echo showHeader($sesLog, '../../index.php', '../../profile/index.php', '../../lo
           echo "<div class='search-b'>" . $id . "</div>";
           echo "<div class='search-b'>" . $name . "</div>";
           echo "</div>";
+          echo "<div class='search-b'><span class='button-removetrip' onclick='window.location=\"delete.php?trip=$id\"'>Usuń podróż $name</span></div>";
+
         }
         ?>
 <?php echo $footer;?>

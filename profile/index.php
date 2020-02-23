@@ -40,7 +40,7 @@
         <div class="profile-button" onclick="window.location='deleteaccount/index.php?&user=<?php echo $sesLog;?>'">Usuń konto</div>
         <div class="profile-distancetitle">Dystans wyszukiwania lokacji w pobliżu:</div>
         <form class="formdistance" method="POST" action="distance.php?login=<?php echo $log;?>">
-            <input class="inputdistance" type="number" name="distance" value="<?php echo $distance;?>">
+            <input class="inputdistance" type="number" min="1" name="distance" value="<?php echo $distance;?>">
             <button class="inputbuttondistance" type="submit">Ustaw</button>
         </form>
     </div>

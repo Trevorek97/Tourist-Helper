@@ -162,7 +162,6 @@
 .formdistance {
     margin: 0 auto;
     text-align:center;
-    width:50%;
 }
 
 .inputdistance {
@@ -171,6 +170,7 @@
     color: #292929;
     border: 1px solid #bb9300;
     border-radius:20px;
+    width:100px;
     margin: 0 auto;
     text-align:center;
 }
@@ -182,11 +182,12 @@
     display:block;
     width:40%;
     margin: 10px auto;
+    text-align:center;
     border: 1px solid #bb9300;
 }
 
 .profile-distancetitle {
-    margin: 0 auto 5px;
+    margin: 0 auto 5px auto;
     color: #bb9300;
     font-weight:600;
     font-size:20px;

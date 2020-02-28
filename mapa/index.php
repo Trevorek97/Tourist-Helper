@@ -72,8 +72,8 @@
     <script src="OpenLayers.js"></script>
     <script>
         let zoom = <?php echo json_encode($zoom);?>;
-        let fromProjection = new OpenLayers.Projection("EPSG:4326");   // Transform from WGS 1984
-        let toProjection   = new OpenLayers.Projection("EPSG:900913"); // to Spherical Mercator Projection
+        let fromProjection = new OpenLayers.Projection("EPSG:4326");
+        let toProjection   = new OpenLayers.Projection("EPSG:900913");
         let markers = new OpenLayers.Layer.Markers( "Markers" );
         let position=[];
         let lat = <?php echo json_encode($lat);?>;
@@ -83,7 +83,6 @@
         for(let i=0;i<lat.length;i++) {
             position[i] = new OpenLayers.LonLat(lon[i], lat[i]).transform( fromProjection, toProjection);
             markers.addMarker(new OpenLayers.Marker(position[i]));
-
         }
         map = new OpenLayers.Map("Map");
         let mapnik = new OpenLayers.Layer.OSM();
@@ -95,14 +94,10 @@
                 start = j;
                 break;
             }
-            if(j==lat.length-1) {
-                start = j;
-            }
+            if(j==lat.length-1) {start = j; }
         }
         map.setCenter(position[start], zoom);
-
         console.log('My object: ', markers);
-
     </script>
 
     <script>

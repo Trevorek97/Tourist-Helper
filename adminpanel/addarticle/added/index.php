@@ -35,6 +35,7 @@
         } else {
             $res = "Błąd dodawania artykułu!";
         }
+
     ?>
 
     <div class=admcontainer>

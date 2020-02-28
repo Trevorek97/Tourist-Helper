@@ -6,7 +6,7 @@
     if(isset($_SESSION["login"])) { $img=profilePhoto($_SESSION["login"], $connection); }
     $sql =  "select article.id, article.title, article_topic.topic, article.pubdate,
                              article.author from article, article_topic where 
-                             article_topic.id = article.topic ";
+                             article_topic.id = article.topic order by pubdate desc";
     $result = $connection->query($sql);
 ?>
 

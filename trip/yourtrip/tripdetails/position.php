@@ -4,8 +4,6 @@
 function propositions($connection, $pos, $tabid, $distance=0.269792247)
 {
     $len = sizeof($pos);
-
-    //Read position of trip locations
     for ($i = 0; $i < $len; $i++) {
         $pos[$i] = str_replace("[", "", $pos[$i]);
         $pos[$i] = str_replace("]", "", $pos[$i]);
@@ -21,10 +19,8 @@ function propositions($connection, $pos, $tabid, $distance=0.269792247)
 
         $lat[$i] = $position[$i][0] + $position[$i][1] + $position[$i][2];
         $lon[$i] = $position[$i][3] + $position[$i][4] + $position[$i][5];
-
     }
 
-    //Read positions of all locations
     $sql = "select id, position from location";
     $result = $connection->query($sql);
     $a = 0;
@@ -57,37 +53,34 @@ function propositions($connection, $pos, $tabid, $distance=0.269792247)
         }
 
     }
-    $b = 0;
     $index = [];
     $a = 0;
 
-    for ($i = 0; $i < sizeof($idloc); $i++) { //zrob tabele z indeksami ktore nie wystepuja w tripie
+    for ($i = 0; $i < sizeof($idloc); $i++) {
             $tocheckindex[$a] = $idloc[$i];
             $tochecklat[$a] = $loclat[$i];
             $tochecklon[$a] = $loclon[$i];
             $a++;
         }
 
-
-if($a != 0 ) {
-    $x = 0;
-    for ($i = 0; $i < sizeof($tabid); $i++) { //sprawdz odleglosci miedzy lokacjami
-        for ($j = 0; $j < sizeof($tocheckindex); $j++) {
-            if ((abs($tochecklat[$j] - $lat[$i]) <= $distance) && (abs($tochecklon[$j] - $lon[$i]) <= $distance)) {
-                $checkindex = false;
-                for ($s = 0; $s < sizeof($index); $s++) {
-                    if ($index[$s] == $tocheckindex[$j]) {
-                        $checkindex = true;
+        if($a != 0 ) {
+            $x = 0;
+            for ($i = 0; $i < sizeof($tabid); $i++) {
+                for ($j = 0; $j < sizeof($tocheckindex); $j++) {
+                    if ((abs($tochecklat[$j] - $lat[$i]) <= $distance) && (abs($tochecklon[$j] - $lon[$i]) <= $distance)) {
+                        $checkindex = false;
+                        for ($s = 0; $s < sizeof($index); $s++) {
+                            if ($index[$s] == $tocheckindex[$j]) {
+                                $checkindex = true;
+                            }
+                        }
+                        if ($checkindex == false) {
+                            $index[$x++] = $tocheckindex[$j];
+                        }
                     }
-                }
-                if ($checkindex == false) {
-                    $index[$x++] = $tocheckindex[$j];
                 }
             }
         }
+        return $index;
     }
-}
-return $index;
-}
-
 ?>

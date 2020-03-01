@@ -107,6 +107,9 @@ echo showHeader($sesLog, '../../../index.php', '../../../profile/index.php', '..
 
     ?>
 <br><br><br><br><br><br>
+    <div class="return-container">
+        <div class="return" onclick="window.location='../../../index.php'">Wróć do strony głównej</div>
+    </div>
 <?php echo $footer;?>
 
 

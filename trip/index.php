@@ -37,6 +37,12 @@ echo showHeader($sesLog, '../index.php', '../profile/index.php', '../login/logou
     <div class="button-yourtrip" onclick="window.location='yourtrip/index.php'">Twoje podróże</div>
 </div>
 
+
+<br><br><br>
+<div class="return-container">
+    <div class="return" onclick="window.location='../index.php'">Wróć do strony głównej</div>
+</div>
+
 <?php echo $footer;?>
 
 

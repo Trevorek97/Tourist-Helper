@@ -11,7 +11,8 @@
     }
 
     function checkAndAdd($link, $place, $placetype, $voivodeship, $name, $connection){
-        if(empty($link) || empty($place) || empty($placetype) || empty($voivodeship) || empty($name)) {
+        if(empty($link) || empty($place) || empty($placetype) 
+           || empty($voivodeship) || empty($name)) {
             $message = "Błąd! Brakuje kluczowych danych!";
             return $message;
         }
@@ -31,7 +32,8 @@
         $success = true;
         $placetypeInt = checkLocationType($placetype);
 
-        $sql2 = "insert into location(voivodeship, place, name, type) values ('$voivodeship', '$place', '$name', '$placetypeInt')";
+        $sql2 = "insert into location(voivodeship, place, name, type) values
+            ('$voivodeship', '$place', '$name', '$placetypeInt')";
         if($connection->query($sql2) === TRUE) {}
         else {
             echo "Error: " . $sql2 . "<br>" . $connection->error;
@@ -55,7 +57,8 @@
                 if ($row['x'] > 0) {
                 } else {
                     $url = readString($value);
-                    $sql2 = "insert into photo(photo, location, url) values ('$value', '$id_location', '$url')";
+                    $sql2 = "insert into photo(photo, location, url) values
+                        ('$value', '$id_location', '$url')";
                     if ($connection->query($sql2) === TRUE) {
                     } else {
                         echo "Error: " . $sql2 . "<br>" . $connection->error;
@@ -67,7 +70,8 @@
         if($success === false) {
             $message = "Niepowodzenie w dodaniu nowej lokacji!";
         } else {
-            $message = "Dodano nową lokację typu " . $placetype . " w miejscowości ". $place . "!";
+            $message = "Dodano nową lokację typu " . $placetype . "
+                        w miejscowości ". $place . "!";
         }
         $connection->close();
         return $message;

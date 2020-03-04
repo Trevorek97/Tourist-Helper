@@ -65,7 +65,8 @@ function propositions($connection, $pos, $tabid, $distance=0.269792247)
             $x = 0;
             for ($i = 0; $i < sizeof($tabid); $i++) {
                 for ($j = 0; $j < sizeof($tocheckindex); $j++) {
-                    if ((abs($tochecklat[$j] - $lat[$i]) <= $distance) && (abs($tochecklon[$j] - $lon[$i]) <= $distance)) {
+                    if ((abs($tochecklat[$j] - $lat[$i]) <= $distance) 
+                        && (abs($tochecklon[$j] - $lon[$i]) <= $distance)) {
                         $checkindex = false;
                         for ($s = 0; $s < sizeof($index); $s++) {
                             if ($index[$s] == $tocheckindex[$j]) {

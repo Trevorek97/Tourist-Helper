@@ -1,6 +1,5 @@
 <?php
 
-
 function propositions($connection, $pos, $tabid, $distance=0.269792247)
 {
     $len = sizeof($pos);
@@ -51,7 +50,6 @@ function propositions($connection, $pos, $tabid, $distance=0.269792247)
             $idloc[$a] = $row["id"];
             $a++;
         }
-
     }
     $index = [];
     $a = 0;
